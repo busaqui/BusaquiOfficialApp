@@ -534,26 +534,6 @@ const Home = (props) => {
     }
 
 
-    // const handleModalBusStop = (busStopInfo) => {
-    //     // console.log(busStopInfo.address)
-
-    //     return(
-    //         <ModalBusStopInfo
-    //             time={time}
-    //             address={busStopInfo.address}
-    //             visible={closeModal}
-    //             transparent={closeModal}
-    //             // busStop={busStopInfo.ID}
-    //             // image={busStopInfo.image}
-    //         />
-    //     )
-    // }
-
-    // const handleCloseModal = () => {
-        
-    //     setCloseModal(true);
-    // }
-
     return (
         <Container>
             <StatusBar barStyle="light-content"/>
@@ -642,7 +622,7 @@ const Home = (props) => {
             <SearchArea>
                 <Area>
                     <Menu>
-                        <MenuIcon></MenuIcon>
+                        <MenuIcon source={require('../../assets/images/Icons/menuIcon.png')}></MenuIcon>
                     </Menu>
                     <SearchInput 
                     value={searchText} 
@@ -656,14 +636,7 @@ const Home = (props) => {
                     
                     {results.length > 0 &&
                         <TouchableWithoutFeedback>
-                            <Scroll style={{
-                            width:'90%',
-                            marginBottom:80,
-                            backgroundColor:'#FFFFFF',
-                            borderRadius:6,
-                            borderWidth:1.5,
-                            borderColor:'#acffff'
-                            }}>
+                            <Scroll>
                                 {results.map((toLoc)=>{
                                     return(
                                         <Result

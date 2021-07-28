@@ -6,5 +6,6 @@ export default{
     CinzaEscuro: '#394452',
     Transparente: '#0000',
     CinzaSemiTransparente: 'rgba(255,255,255, 0.2)',
-    PretoBusaqui: '#2C3A4B'
+    PretoBusaqui: '#2C3A4B',
+    CinzaSombra:'#dddddd'
 }
