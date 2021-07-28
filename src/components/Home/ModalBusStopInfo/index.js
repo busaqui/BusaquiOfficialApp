@@ -92,10 +92,10 @@ export const ModalBusStopInfo = (props) => {
                                 Ponto de embarque
                             </Title >
                             <ButtonLike>
-                                <IconLike source={require('../../../assets/images/Icons/like.png')}></IconLike>
+                                <IconLike source={require('../../../assets/images/icons/like.png')}></IconLike>
                             </ButtonLike>
                             <ButtonShare>
-                                <IconShare source={require('../../../assets/images/Icons/share.png')}></IconShare>
+                                <IconShare source={require('../../../assets/images/icons/share.png')}></IconShare>
                             </ButtonShare>
                         </HeaderLine>
 
@@ -106,7 +106,7 @@ export const ModalBusStopInfo = (props) => {
                             <ButtonBusLine>
                                 <BusText>Ver linhas</BusText>
                             </ButtonBusLine>
-                            <PearsonIcon source={require('../../../assets/images/Icons/WalkingPerson.png')}></PearsonIcon>
+                            <PearsonIcon source={require('../../../assets/images/icons/walkingPerson.png')}></PearsonIcon>
                             <Time>
                             {improvedTime}
                             </Time>

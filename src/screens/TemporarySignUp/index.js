@@ -167,10 +167,10 @@ const SignUp = (props) => {
                     <Valid/>
                     <Icon style={sensorKeyboard ? {display: 'none'} : {display: 'flex'}}>
                        <ButtonFacebook onPress={''}>
-                            <ImageFacebook source={require("../../assets/Images/Icons/Facebook.png")}/>
+                            <ImageFacebook source={require('../../assets/images/icons/facebook.png')}/>
                        </ButtonFacebook>
                        <ButtonGoogle onPress={''}>
-                            <ImageGoogle source={require("../../assets/Images/Icons/Google.png")}/>
+                            <ImageGoogle source={require('../../assets/images/icons/google.png')}/>
                        </ButtonGoogle>
                     </Icon>
                     <Redirect style={sensorKeyboard ? {display: 'none'} : {display: 'flex'}}>

@@ -7,7 +7,7 @@ export default ()=>{
       /* Container da Primeira tela (Page) */
     <PageSplash>      
       {/* Logo centralizada em linha e coluna */}
-        <LogoBusaqui source={require('../../assets/Images/Icons/logoBusaqui.png')} resizeMode="contain"/>
+        <LogoBusaqui source={require('../../assets/images/icons/logoBusaqui.png')} resizeMode="contain"/>
     </PageSplash>  
   );
 }

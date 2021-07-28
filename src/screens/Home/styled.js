@@ -10,19 +10,21 @@ export const SearchArea = styled.View`
     right: 10px;
     top: 50px;
     align-items:center;
-    height:100%;
+    height:74%;
     margin-bottom:20px;
     width:92%;
 `;
 export const Area = styled.View`
     height:41.37px;
     width:92%;
-    border-width: 1px;
+    border-width: 3px;
     border-radius: 2px;
     border-color: ${color.CinzaSombra};
     border-bottom-width: 0;  
-    elevation: 12;
-    flex-direction:row;   
+    elevation: 5;
+    flex-direction:row; 
+    justify-content:center;
+    align-items:center;  
 `;
 export const Menu = styled.TouchableHighlight`
     height:41.37px;
@@ -41,7 +43,7 @@ export const SearchInput = styled.TextInput`
     background-color: ${color.Branco};
     color:${color.PretoBusaqui};
     padding-left:8px;
-    font-size:17px;
+    font-size:16px;    
 `;
 export const Result = styled.TouchableHighlight`
     padding:2px;
@@ -49,13 +51,13 @@ export const Result = styled.TouchableHighlight`
 
 export const ResultText = styled.Text`
    color:${color.PretoBusaqui};
-   font-size:17px;
+   font-size:16px;
    margin-left:8px;
    margin-right:8px;
 `;
 
 export const Scroll = styled.ScrollView`
     width:92%;
-    margin-bottom:80px;
+    margin-bottom:10px;
     background-color:${color.Branco};                        
 `;

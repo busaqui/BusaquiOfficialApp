@@ -13,7 +13,7 @@ export const NotificationCard = (props) => {
         <Container>
             <LogoContainer>
                 <Logo source={NotificationLogo}/>
-                <LogoMask source={require('../../assets/Images/Image_Mask.png')}/>
+                <LogoMask source={require('../../assets/images/Image_Mask.png')}/>
             </LogoContainer>
             <TextContainer>
                 <Title>

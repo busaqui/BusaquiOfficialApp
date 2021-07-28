@@ -64,7 +64,7 @@ const Preload = (props) => {
             <ViewStylePage> 
             {/* Container do logo Busaqui */}
                 {/* Logo transparente do Busaqui inserido na parte superior centralizada em linha */}
-                <LogoBusaqui source={require('../../assets/images/Icons/logoBusaqui.png')}/>
+                <LogoBusaqui source={require('../../assets/images/icons/logoBusaqui.png')}/>
                 {/* CONTAINER DO TÍTULO + SUBTÍTULO */}
                 <ContainerText>
                     <ViewStyleTitle>
@@ -76,11 +76,9 @@ const Preload = (props) => {
                         {/* Container do subtítulo */}
                     <ViewStyleSubtitle>
                         {/* Subtítulo centralizado em linha abaixo do título */}
-                        <Subtitle> 
-                            Assistente de mobilidade urbana, que {'\n'}
-                            mostra a localização em tempo real dos {'\n'}
-                            ônibus de sua cidade.
-                        </Subtitle>
+                            <Subtitle>Assistente de mobilidade urbana, que</Subtitle>
+                            <Subtitle>mostra a localização em tempo real dos</Subtitle> 
+                            <Subtitle>ônibus de sua cidade.</Subtitle>
                     </ViewStyleSubtitle>
                 </ContainerText>
                 <ButtomSubscribe
