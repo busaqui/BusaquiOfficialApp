@@ -9,8 +9,8 @@ import Home from './src/screens/Home';
 export default () => (
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>  
-      {/* <MainStack/> */}
-      <Home/>
+      <MainStack/>
+      {/* <Home/> */}
       {/* <Route280 />  */}
     </PersistGate>{/*Fim PersistGate */}
   </Provider>/*Fim Provider*/

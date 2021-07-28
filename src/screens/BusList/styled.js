@@ -6,7 +6,7 @@ export const Container = styled.SafeAreaView`
 `;
 
 export const Header = styled.View`
-    height: 20%;
+    height: 15%;
     flex-direction: row;
     /* background-color: green; */
     align-items: center;
@@ -14,7 +14,7 @@ export const Header = styled.View`
 `;
 
 export const ListContainer = styled.View`
-    height: 80%;
+    height: 85%;
 `;
 
 export const ArrowButton = styled.TouchableOpacity`

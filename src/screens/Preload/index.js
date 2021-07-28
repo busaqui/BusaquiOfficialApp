@@ -27,7 +27,7 @@ const Preload = (props) => {
             props.navigation.dispatch(StackActions.reset({
                 index:0,
                 actions:[
-                    NavigationActions.navigate({routeName:'Login'})
+                    NavigationActions.navigate({routeName:'SignIn'})
                 ]
             }));
         } else {

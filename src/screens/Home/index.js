@@ -317,6 +317,7 @@ import {
 import {HomeDrawer} from '../../navigators/HomeDrawer';
 import { baseProps } from 'react-native-gesture-handler/lib/typescript/handlers/gestureHandlers';
 import { DATA_BUSLIST } from './BUSSTOP_DATA';
+// import BusStopIcon from '../../assets/images/Icons/BusStop.png';
 import BusStopIcon from '../../assets/images/Icons/BusStop.png';
 import { ModalBusStopInfo } from '../../components/Home/ModalBusStopInfo/index.js';
 import { ReactButton } from 'react-native-gesture-handler';

@@ -1,9 +1,11 @@
-import React, {useState} from 'react'
-import { FlatList, ScrollView } from "react-native"
+import moment from 'moment';
+import React, {useState} from 'react';
+import { FlatList, ScrollView } from "react-native";
 
-import { StackActions, NavigationActions } from 'react-navigation';
+import { StackActions, NavigationActions } from 'react-navigation'
 
-import {BusInfoCard} from '../../components/BusInfoCard'
+import {BusInfoCard} from '../../components/BusInfoCard';
+import {DATA_BUSLIST} from './BUS_DATA.js';
 
 import {
     Container,Header,ListContainer,ArrowButton,ArrowButtonImage,
@@ -12,7 +14,15 @@ import {
 
 const BusList = (props) => {
 
-    const [myRoutes, setMyRoutes] = useState([]);
+    renderItems = ({ item }) => {
+        return(
+            <BusInfoCard
+            BusID={item.busID}
+            RouteName={item.routeName}
+            Time={moment(item.time).endOf('minute').fromNow()}
+        />
+        )
+    }
 
     return(
         <Container>
@@ -28,45 +38,17 @@ const BusList = (props) => {
             </Header>
 
             <ListContainer>
-                {/* <FlatList
-                    renderItem={(item) => (
-                        <BusInfoCard/>
-                    )}/> */}
-                <ScrollView style={{flex:1}}>
-                    <BusInfoCard
-                    BusID={177}
-                    RouteName="Alegria X Campos Elísios"
-                    Time="5 min"
-                    />
-                    <BusInfoCard
-                    BusID={280}
-                    RouteName="Bulhões X Campos Elísios"
-                    Time="6 min"
-                    />
-                    <BusInfoCard
-                    BusID={276}
-                    RouteName="Campos Elísios X Alegria"
-                    Time="10 min"
-                    />
-                    <BusInfoCard
-                    BusID={275}
-                    RouteName="Paraíso X Alegria"
-                    Time="20 min"
-                    />
-                    <BusInfoCard
-                    BusID={520}
-                    RouteName="Alegria X Bulhões"
-                    Time="15 min"
-                    />
-                    <BusInfoCard
-                    BusID={274}
-                    RouteName="Campos Elísios X Bulhões"
-                    Time="12 min"
-                    />
-                </ScrollView>
+
+                <FlatList
+                    keyExtractor={(item) => String(item.id) }
+                    renderItem={renderItems}
+                    data={DATA_BUSLIST}
+                    showsVerticalScrollIndicator={false}
+                />
+
             </ListContainer>
         </Container>
-    )
+    );
 }
 
 export default BusList; 

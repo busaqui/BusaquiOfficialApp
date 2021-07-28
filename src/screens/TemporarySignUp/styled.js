@@ -39,7 +39,6 @@ export const Underside = styled.View`
     height:40%;
     /* justify-content:space-around; */
     align-items:center;  
-    background-color: blue;
 `;
 
 
