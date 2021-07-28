@@ -323,7 +323,7 @@ import { ReactButton } from 'react-native-gesture-handler';
 
 
 const Home = (props) => {
-    let timer;
+    let timer = (0);
     const map = useRef();
 
     const [maploc, setMapLoc] = useState({
