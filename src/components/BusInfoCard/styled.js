@@ -13,13 +13,13 @@ export const TextContainer = styled.View`
 `;
 
 export const LogoRoute = styled.Image`
-    width:41px;
+    width:40px;
     height:60px;
 `;
 
 export const LogoContainer = styled.View`
     width:42px;
-    height:61px;
+    height:62px;
     align-items: center;
     margin-left:31px;
 `;

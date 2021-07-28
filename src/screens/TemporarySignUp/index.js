@@ -115,8 +115,8 @@ const SignUp = (props) => {
                     { height: '55%'
                     } : {
                     height: '40%'
-                        }}>       
-
+                        }}>                            
+                    {/* CONTAINER DO INPUT: LABEL + TEXT INPUT */}
                     <InputCard
                     InputTitle="Nome"
                     Placeholder="Digite seu nome"
@@ -175,7 +175,9 @@ const SignUp = (props) => {
                     </Icon>
                     <Redirect style={sensorKeyboard ? {display: 'none'} : {display: 'flex'}}>
                         <RedirectText>Não tem Conta? </RedirectText>
-                            <RedirectButton onPress={''}>
+                            <RedirectButton 
+                            // onPress={''}
+                            >
                                 <TextButton>Clique aqui</TextButton>
                             </RedirectButton>
                     </Redirect>
