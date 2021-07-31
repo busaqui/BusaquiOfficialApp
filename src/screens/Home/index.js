@@ -126,8 +126,13 @@ const Home = (props) => {
             const geoBus = await Geocoder.from(toBusStop.center.latitude,toBusStop.center.longitude);
     
             if(geoBus.results.length > 0){
+                if(geoBus.results[0].address_components[0].short_name.length > 4){
+                    setBusStopAddress(geoBus.results[0].address_components[0].short_name); 
+                }
+                else{
+                    setBusStopAddress(geoBus.results[0].formatted_address);
+                }
     
-                setBusStopAddress(geoBus.results[0].address_components[0].short_name); 
                 // setBusStopAddress(geoBus.results[0].formatted_address);
 
             }
@@ -317,8 +322,8 @@ const Home = (props) => {
                         apikey={MapsAPI}
                         origin={fromLoc.center}
                         destination={toBusStop.center}
-                        strokeWidth={5}
-                        strokeColor='black'
+                        // strokeWidth={5}
+                        strokeColor='transparent'
                         // apikey={MapsAPI}
                         onReady={r => {
                             setBusStopTime(r.duration)
