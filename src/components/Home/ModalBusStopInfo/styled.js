@@ -9,54 +9,65 @@ export const Container = styled.View`
 
 export const TouchableCloseVertical = styled.TouchableOpacity`
     width: 100%;
-    height: 22.5%;   
+    height: 20%;
+    /* height: auto; */
+    /* background-color: red;   */
 `;
 export const ViewCloseMiddle = styled.View`
-    height: 55%; 
+    height: 60%; 
     width: 100%;
     flex-direction:row;
 `;
 export const TouchableCloseHorizontal = styled.TouchableOpacity`
     width: 14%;
     height: 100%;
+    /* background-color: red; */
 `;
 
 export const Content = styled.View`
-    height: 92%;
-    width: 73%;
+    height: 100%;
+    width: 72%;
     background-color: ${color.Branco};
     border-radius: 8px;
     /* border-width: 2px; */
     /* border-color: blue; */
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    /* box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); */
+    justify-content: space-between;
+    border-color: ${color.CinzaSombra};
+    border-bottom-width: 0;  
+    elevation: 5;
+    padding-top: 23px;
+    padding-bottom: 23px;
 `;
 
 export const BusStopImage = styled.View`
     width: 85%;
     height: 48%;
     border-radius: 8px;
-    margin-top: 29px;
+    /* margin-top: 29px; */
     align-self: center;
     background-color: red;
 `;
 
 export const HeaderLine = styled.View`
     flex-direction: row;
+    justify-content: space-between;
+    margin-left: 23px;
+    margin-right: 23px;
 `;
 
 export const Title = styled.Text`
-    margin-top: 16px;
+    /* margin-top: 16px; */
     color: ${color.Azul};
     font-family: 'Montserrat-Bold';
     font-size: 16px;
-    margin-left: 23px;
 `;
 
 export const ButtonLike = styled.TouchableOpacity`
     width:24px;
     height:24px;
-    margin-top:16px;
-    margin-left:10px;
+    /* margin-top:16px; */
+    /* margin-left:10px; */
 `;
 
 export const IconLike = styled.Image`
@@ -67,8 +78,8 @@ export const IconLike = styled.Image`
 export const ButtonShare = styled.TouchableOpacity`
     width:24px;
     height:24px;
-    margin-top: 16px;
-    margin-left:10px;
+    /* margin-top: 16px; */
+    /* margin-left:10px; */
 `;
 
 export const IconShare = styled.Image`
@@ -82,13 +93,13 @@ export const AddressText = styled.Text`
     font-family: 'Montserrat-Medium';
     margin-left: 23px;
     margin-right: 23px;
-    margin-top: 9px;
+    /* margin-top: 9px; */
 `;
 
 export const Footer = styled.View`
     height:35px;
     width:86%;
-    margin-top:25px;
+    /* margin-top:25px; */
     flex-direction:row;
     align-self:center;
 `;

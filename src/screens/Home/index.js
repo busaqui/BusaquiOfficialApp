@@ -57,13 +57,21 @@ const Home = (props) => {
     const [busStopImage,setBusStopImage] = useState('');
     const [busStopTime,setBusStopTime] = useState(0);
     const [busStopModal,setBusStopModal] = useState(false);
-    const [toBusStop,setToBusStop] = useState({});
     const [showBusStopDirection, setShowBusStopDirection] = useState(false);
     const [busStopVisible, setBusStopVisible] = useState(false);
+    const [toBusStop,setToBusStop] = useState({
+        center:{
+            latitude:57.78825,
+            longitude:-122.4322
+        },
+        zoom:18,
+        pitch:0,
+        altitude:0,
+        heading:0
+    });
 
     const [results, setResults ] = useState([]);
     const [searchText, setSearchText] = useState('');
-    const [closeScroll, setCloseScroll] = useState(true);
     
      useEffect(()=>{
         Geocoder.init(MapsAPI, {language:'pt-br'});
@@ -111,7 +119,28 @@ const Home = (props) => {
                     }, 1000);
                             
                 }
-            }, [searchText]);
+        }, [searchText]);
+
+        useEffect(async() => {
+            // if(toBusStop) {
+                
+            // }
+            const geoBus = await Geocoder.from(toBusStop.center.latitude,toBusStop.center.longitude);
+    
+            if(geoBus.results.length > 0){
+                if(geoBus.results[0].address_components[0].short_name.length > 4){
+                    setBusStopAddress(geoBus.results[0].address_components[0].short_name); 
+                }
+                else{
+                    setBusStopAddress(geoBus.results[0].formatted_address);
+                }
+    
+                // setBusStopAddress(geoBus.results[0].formatted_address);
+
+            }
+            // console.log(geoBus.results[0]);  
+                
+        },[toBusStop])
                     
 
     function calculateAngle(coordinates) {
@@ -325,8 +354,8 @@ const Home = (props) => {
                         apikey={MapsAPI}
                         origin={fromLoc.center}
                         destination={toBusStop.center}
-                        strokeWidth={5}
-                        strokeColor='black'
+                        // strokeWidth={5}
+                        strokeColor='transparent'
                         // apikey={MapsAPI}
                         onReady={r => {
                             setBusStopTime(r.duration)
@@ -411,7 +440,6 @@ const Home = (props) => {
             {busStopModal &&
             
                 <ModalBusStopInfo
-
                 address={busStopAddress}
                 time={busStopTime}
                 visible={busStopVisible}
