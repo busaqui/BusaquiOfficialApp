@@ -1,10 +1,11 @@
 import React, { useRef, useState, useEffect  } from 'react';
-import { StatusBar, Image, Text, TouchableHighlight, Button, TouchableWithoutFeedback } from 'react-native';
+import { StatusBar, Image, Text, TouchableHighlight, Button, TouchableOpacity, View } from 'react-native';
 import  MapView, { Marker } from 'react-native-maps';
 import Geolocation from '@react-native-community/geolocation';
 import Geocoder from 'react-native-geocoding';
 import MapViewDirections from 'react-native-maps-directions';
 import { MapsAPI } from '../../services/config.js';
+import {busLoc}  from './servicesBus';
 import color from '../../assets/color.js';
 import { 
     Container,
@@ -15,9 +16,9 @@ import {
     SearchInput,
     Result,
     ResultText,
-    Scroll
+    Scroll,
+    ViewButton
     } from './styled';
-
 
 import {HomeDrawer} from '../../navigators/HomeDrawer';
 import { baseProps } from 'react-native-gesture-handler/lib/typescript/handlers/gestureHandlers';
@@ -26,8 +27,9 @@ import BusStopIcon from '../../assets/images/icons/busStop.png';
 import { ModalBusStopInfo } from '../../components/Home/ModalBusStopInfo/index.js';
 import { ReactButton } from 'react-native-gesture-handler';
 
-
 const Home = (props) => {
+    
+    
     let timer = (0);
     const map = useRef();
 
@@ -148,9 +150,16 @@ const Home = (props) => {
             console.log(geo.results[0]);  
 
 
-            },(error)=>{
-                
-            });
+            },  
+            (error)=>{
+                ()=>alert('Erro em encontrar sua localização');
+            },
+            {
+                // timeout:2000,
+                enableHighAccuracy:true,
+                // maximumAge:1000
+            }
+            );
     }
     // const handleFromClic = () => {
     //     alert("Você clicou aqui!");
@@ -219,8 +228,9 @@ const Home = (props) => {
     
         }
 
-    const handleCloseScroll = () =>{
-        setCloseScroll(false);
+    const handleCloseScroll = () => {
+        props.results(0);
+        setResults(results);
     }
 
     const handleBusStop = (busStopInfo) => {
@@ -242,9 +252,12 @@ const Home = (props) => {
         setBusStopVisible(true);
     }
 
+        
+
 
     return (
         <Container>
+            {/* <Locations/> */}
             <StatusBar barStyle="light-content"/>
             <MapView
                 ref={map}
@@ -277,6 +290,25 @@ const Home = (props) => {
                         />
                     </Marker>
                 }
+
+                {/* {fromLoc.center &&
+                    
+                    <Marker 
+                        coordinate={fromLoc.center} 
+                        anchor={{x: 0.5, y: 0.4}}
+                        flat={true}
+                        rotation={angleCar}
+                    >
+                        <Image   
+                            source={require('../../assets/images/icons/bus.png')}
+                            style={{
+                                width: 40,
+                                height: 40,
+                            }}
+                        />
+                    </Marker>
+                } */}
+
                 {showDirections && 
                     <MapViewDirections 
                         origin={fromLoc.center}
@@ -344,10 +376,10 @@ const Home = (props) => {
                 
                     
                     {results.length > 0 &&
-                        <TouchableWithoutFeedback 
-                        onPress={handleCloseScroll} 
-                        // visibleScroll={closeScroll}
-                        >
+                    <>
+                        <TouchableOpacity 
+                        onPress={handleCloseScroll}
+                        ></TouchableOpacity>
                             <Scroll
                             
                             >
@@ -364,10 +396,17 @@ const Home = (props) => {
                                     );
                                 })}    
                             </Scroll>
-                        </TouchableWithoutFeedback>
+                        </>
                     }
                 
                 </SearchArea>
+                <ViewButton >
+                        <TouchableOpacity style={{width:120,height:30}}>
+                            <Text>Tela locationBus</Text>
+                        </TouchableOpacity>
+                        
+                        
+                </ViewButton>
 
             {busStopModal &&
             

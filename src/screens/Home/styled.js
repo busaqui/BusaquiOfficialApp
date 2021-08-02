@@ -1,5 +1,6 @@
-import styled from 'styled-components/native';
+import styled,{ css } from 'styled-components/native';
 import color from '../../assets/color.js';
+import { Platform } from 'react-native';
 
 export const Container = styled.View`
     flex:1;
@@ -8,15 +9,24 @@ export const SearchArea = styled.View`
     position: absolute;
     left: 10px;
     right: 10px;
-    top: 50px;
     align-items:center;
     height:74%;
-    margin-bottom:20px;
     width:92%;
+
+    ${Platform.select({
+        ios:css`
+        margin-top:25px;
+        background-color:#0000;
+        `,
+
+        android:css`
+        margin-top:18px;
+        `
+    })}
 `;
 export const Area = styled.View`
     height:41.37px;
-    width:92%;
+    width:94%;
     border-width: 3px;
     border-radius: 2px;
     border-color: ${color.CinzaSombra};
@@ -60,4 +70,13 @@ export const Scroll = styled.ScrollView`
     width:92%;
     margin-bottom:10px;
     background-color:${color.Branco};                        
+`;
+
+export const ViewButton = styled.View`
+    width:120px;
+    height:40px;
+    /* position:absolute; */
+    background-color:#cfc;
+    justify-content:flex-end;
+
 `;
