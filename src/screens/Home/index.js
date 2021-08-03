@@ -28,6 +28,7 @@ import { ModalBusStopInfo } from '../../components/Home/ModalBusStopInfo/index.j
 import { ReactButton } from 'react-native-gesture-handler';
 import { StackActions, NavigationActions } from 'react-navigation';
 
+
 const Home = (props) => {
     
     
@@ -182,7 +183,7 @@ const Home = (props) => {
 
             },  
             (error)=>{
-                ()=>alert('Erro em encontrar sua localização');
+                ()=>alert("Erro em encontrar sua localização");
             },
             {
                 // timeout:2000,
@@ -280,6 +281,16 @@ const Home = (props) => {
 
         setBusStopModal(true);
         setBusStopVisible(true);
+    }
+    
+    const handleLocationBus = async () => {
+
+        props.navigation.dispatch(StackActions.reset({
+            index:0,
+            actions:[
+                NavigationActions.navigate({routeName:'LocationBus'})
+            ]
+        }));
     }
 
     return (
@@ -387,6 +398,8 @@ const Home = (props) => {
 
             {/* <SearchBox dataClick={searchBoxClick} /> */}
 
+
+
             <SearchArea>
                 <Area>
                     <Menu>
@@ -427,8 +440,19 @@ const Home = (props) => {
                     }
                 
                 </SearchArea>
-                {/* <ViewButton >
 
+
+
+                {/* <ViewButton >
+                        <TouchableOpacity style={{width:120,height:30}} onPress={}>
+
+                        <TouchableOpacity
+                            style={{width:120,height:30}}
+                            onPress={handleLocationBus}
+                        >
+
+                            <Text>Tela locationBus</Text>
+                        </TouchableOpacity>
                         
                         
                 </ViewButton> */}
