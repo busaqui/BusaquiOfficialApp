@@ -295,7 +295,7 @@ const Home = (props) => {
 
     return (
         <Container>
-            {/* <Locations/> */}
+            
             <StatusBar barStyle="light-content"/>
             <MapView
                 ref={map}
