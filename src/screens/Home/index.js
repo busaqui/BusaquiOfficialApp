@@ -283,41 +283,10 @@ const Home = (props) => {
         setBusStopVisible(true);
     }
 
-    const handleLocationBus = async () => {
-        //CONDIÇÃO PARA INDICAR A QUAL TELA IRÁ IR
-<<<<<<< HEAD
-        if(!props.token) {
-            //MANDAR PARA TELA DE LOGIN
-            props.navigation.dispatch(StackActions.reset({
-                index:0,
-                actions:[
-                    NavigationActions.navigate({routeName:'SignIn'})
-                ]
-            }));
-        } else {
-            //MANDAR PARA TELA DE HOME
-            props.navigation.dispatch(StackActions.reset({
-                index:0,
-                actions:[
-                    NavigationActions.navigate({routeName:'HomeDrawer'})
-                ]
-            }));
-        }
-    }
-
-=======
-        props.navigation.dispatch(StackActions.reset({
-            index:0,
-            actions:[
-                NavigationActions.navigate({routeName:'LocationBus'})
-            ]
-        }));
-    }
->>>>>>> a741691b80c164aabce8c7bc18e68ef6dc649f88
 
     return (
         <Container>
-            {/* <Locations/> */}
+            
             <StatusBar barStyle="light-content"/>
             <MapView
                 ref={map}
@@ -461,14 +430,9 @@ const Home = (props) => {
                 
                 </SearchArea>
                 <ViewButton >
-<<<<<<< HEAD
-                        <TouchableOpacity style={{width:120,height:30}} onPress={}>
-=======
                         <TouchableOpacity
                             style={{width:120,height:30}}
                             onPress={handleLocationBus}
-                        >
->>>>>>> a741691b80c164aabce8c7bc18e68ef6dc649f88
                             <Text>Tela locationBus</Text>
                         </TouchableOpacity>
                         
