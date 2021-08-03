@@ -26,6 +26,7 @@ import { DATA_BUSLIST } from './BUSSTOP_DATA';
 import BusStopIcon from '../../assets/images/icons/busStop.png';
 import { ModalBusStopInfo } from '../../components/Home/ModalBusStopInfo/index.js';
 import { ReactButton } from 'react-native-gesture-handler';
+import Locations from '../LocationBus/locationBus.js';
 
 const Home = (props) => {
     
@@ -181,7 +182,7 @@ const Home = (props) => {
 
             },  
             (error)=>{
-                ()=>alert('Erro em encontrar sua localização');
+                ()=>alert("Erro em encontrar sua localização");
             },
             {
                 // timeout:2000,
@@ -281,7 +282,26 @@ const Home = (props) => {
         setBusStopVisible(true);
     }
 
-        
+    const handleLocationBus = async () => {
+        //CONDIÇÃO PARA INDICAR A QUAL TELA IRÁ IR
+        if(!props.token) {
+            //MANDAR PARA TELA DE LOGIN
+            props.navigation.dispatch(StackActions.reset({
+                index:0,
+                actions:[
+                    NavigationActions.navigate({routeName:'SignIn'})
+                ]
+            }));
+        } else {
+            //MANDAR PARA TELA DE HOME
+            props.navigation.dispatch(StackActions.reset({
+                index:0,
+                actions:[
+                    NavigationActions.navigate({routeName:'HomeDrawer'})
+                ]
+            }));
+        }
+    }
 
 
     return (
@@ -430,7 +450,7 @@ const Home = (props) => {
                 
                 </SearchArea>
                 <ViewButton >
-                        <TouchableOpacity style={{width:120,height:30}}>
+                        <TouchableOpacity style={{width:120,height:30}} onPress={}>
                             <Text>Tela locationBus</Text>
                         </TouchableOpacity>
                         

@@ -84,7 +84,13 @@ const Locations = (props) =>{
                }
                 
             </MapView>
-            
+            <ViewButton >
+                        <TouchableOpacity style={{width:120,height:30}}>
+                            <Text>Tela locationBus</Text>
+                        </TouchableOpacity>
+                        
+                        
+                </ViewButton>
         </View>
       
       

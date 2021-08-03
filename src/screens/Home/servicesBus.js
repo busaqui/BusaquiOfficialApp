@@ -1,4 +1,4 @@
-import {getMyPositionBus} from './locationBus.js';
+import {getMyPositionBus} from '../LocationBus/locationBus.js';
 
 // export const getMyPositionBus = {};
 export const busLoc = [
