@@ -34,26 +34,26 @@ export const Area = styled.View`
     elevation: 5;
     flex-direction:row; 
     justify-content:center;
-    align-items:center;  
+    align-items:center; 
 `;
 export const Menu = styled.TouchableHighlight`
-    height:41.37px;
+    height:42px;
     width:12%;
     justify-content:center;
     align-items:center;
-    background-color:${color.Branco};
+    background-color:${color.Branco};   
 `;
 export const MenuIcon = styled.Image`
     height:24px;
     width:24px;
 `;
 export const SearchInput = styled.TextInput`
-    height:41.37px;
+    height:42px;
     width:88%;
     background-color: ${color.Branco};
     color:${color.PretoBusaqui};
     padding-left:8px;
-    font-size:16px;    
+    font-size:16px;
 `;
 export const Result = styled.TouchableHighlight`
     padding:2px;

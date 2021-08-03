@@ -282,16 +282,6 @@ const Home = (props) => {
         setBusStopVisible(true);
     }
 
-    const handleLocationBus = async () => {
-        //CONDIÇÃO PARA INDICAR A QUAL TELA IRÁ IR
-        props.navigation.dispatch(StackActions.reset({
-            index:0,
-            actions:[
-                NavigationActions.navigate({routeName:'LocationBus'})
-            ]
-        }));
-    }
-
     return (
         <Container>
             {/* <Locations/> */}
@@ -437,16 +427,11 @@ const Home = (props) => {
                     }
                 
                 </SearchArea>
-                <ViewButton >
-                        <TouchableOpacity
-                            style={{width:120,height:30}}
-                            onPress={handleLocationBus}
-                        >
-                            <Text>Tela locationBus</Text>
-                        </TouchableOpacity>
+                {/* <ViewButton >
+
                         
                         
-                </ViewButton>
+                </ViewButton> */}
 
             {busStopModal &&
             

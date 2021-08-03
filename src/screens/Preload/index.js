@@ -1,5 +1,5 @@
 import React from 'react';
-import { StatusBar } from 'react-native';
+import { StatusBar, TouchableOpacity, Text } from 'react-native';
 import { StackActions, NavigationActions } from 'react-navigation';
 import { connect } from 'react-redux';
 import fonts, { assets } from '../../../react-native.config';
@@ -54,6 +54,16 @@ const Preload = (props) => {
             )
         }
     }
+
+    const handleLocationBus = async () => {
+        //CONDIÇÃO PARA INDICAR A QUAL TELA IRÁ IR
+        props.navigation.dispatch(StackActions.reset({
+            index:0,
+            actions:[
+                NavigationActions.navigate({routeName:'LocationBus'})
+            ]
+        }));
+    }
     
     return (
     <ScreenInitialLogin> 
@@ -88,6 +98,21 @@ const Preload = (props) => {
                 {/*Função de texto do botão de entrar */}
                 <HandleButtonText/>
                 </ButtomSubscribe>
+
+                <TouchableOpacity
+                style={{width:120,
+                        height:30, 
+                        backgroundColor: 'red', 
+                        justifyContent: 'center', 
+                        alignItems:'center',
+                        borderRadius: 15
+                    }}
+                onPress={handleLocationBus}
+                >
+                    <Text style={{color: 'white', fontWeight: 'bold'}}>
+                        Tela locationBus
+                    </Text>
+                </TouchableOpacity>
             </ViewStylePage>
         </Image> 
     </ScreenInitialLogin>   
