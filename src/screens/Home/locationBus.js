@@ -33,7 +33,7 @@ const Locations = (props) =>{
     useEffect(()=>{
         Geocoder.init(MapsAPI, {language:'pt-br'});
         getMyPositionBus();
-    }, []);
+    });
 
 
 

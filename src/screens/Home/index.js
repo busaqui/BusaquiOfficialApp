@@ -26,6 +26,7 @@ import { DATA_BUSLIST } from './BUSSTOP_DATA';
 import BusStopIcon from '../../assets/images/icons/busStop.png';
 import { ModalBusStopInfo } from '../../components/Home/ModalBusStopInfo/index.js';
 import { ReactButton } from 'react-native-gesture-handler';
+import { StackActions, NavigationActions } from 'react-navigation';
 
 const Home = (props) => {
     
@@ -76,7 +77,7 @@ const Home = (props) => {
      useEffect(()=>{
         Geocoder.init(MapsAPI, {language:'pt-br'});
         getMyCurrentPosition();
-    }, []);
+    });
 
      useEffect(()=>{
         if(fromLoc.center && toLoc.center) {
@@ -281,8 +282,15 @@ const Home = (props) => {
         setBusStopVisible(true);
     }
 
-        
-
+    const handleLocationBus = async () => {
+        //CONDIÇÃO PARA INDICAR A QUAL TELA IRÁ IR
+        props.navigation.dispatch(StackActions.reset({
+            index:0,
+            actions:[
+                NavigationActions.navigate({routeName:'LocationBus'})
+            ]
+        }));
+    }
 
     return (
         <Container>
@@ -430,7 +438,10 @@ const Home = (props) => {
                 
                 </SearchArea>
                 <ViewButton >
-                        <TouchableOpacity style={{width:120,height:30}}>
+                        <TouchableOpacity
+                            style={{width:120,height:30}}
+                            onPress={handleLocationBus}
+                        >
                             <Text>Tela locationBus</Text>
                         </TouchableOpacity>
                         
