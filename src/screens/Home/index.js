@@ -26,7 +26,8 @@ import { DATA_BUSLIST } from './BUSSTOP_DATA';
 import BusStopIcon from '../../assets/images/icons/busStop.png';
 import { ModalBusStopInfo } from '../../components/Home/ModalBusStopInfo/index.js';
 import { ReactButton } from 'react-native-gesture-handler';
-import Locations from '../LocationBus/locationBus.js';
+import { StackActions, NavigationActions } from 'react-navigation';
+
 
 const Home = (props) => {
     
@@ -77,7 +78,7 @@ const Home = (props) => {
      useEffect(()=>{
         Geocoder.init(MapsAPI, {language:'pt-br'});
         getMyCurrentPosition();
-    }, []);
+    });
 
      useEffect(()=>{
         if(fromLoc.center && toLoc.center) {
@@ -284,6 +285,7 @@ const Home = (props) => {
 
     const handleLocationBus = async () => {
         //CONDIÇÃO PARA INDICAR A QUAL TELA IRÁ IR
+<<<<<<< HEAD
         if(!props.token) {
             //MANDAR PARA TELA DE LOGIN
             props.navigation.dispatch(StackActions.reset({
@@ -303,6 +305,15 @@ const Home = (props) => {
         }
     }
 
+=======
+        props.navigation.dispatch(StackActions.reset({
+            index:0,
+            actions:[
+                NavigationActions.navigate({routeName:'LocationBus'})
+            ]
+        }));
+    }
+>>>>>>> a741691b80c164aabce8c7bc18e68ef6dc649f88
 
     return (
         <Container>
@@ -450,7 +461,14 @@ const Home = (props) => {
                 
                 </SearchArea>
                 <ViewButton >
+<<<<<<< HEAD
                         <TouchableOpacity style={{width:120,height:30}} onPress={}>
+=======
+                        <TouchableOpacity
+                            style={{width:120,height:30}}
+                            onPress={handleLocationBus}
+                        >
+>>>>>>> a741691b80c164aabce8c7bc18e68ef6dc649f88
                             <Text>Tela locationBus</Text>
                         </TouchableOpacity>
                         
