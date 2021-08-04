@@ -6,7 +6,7 @@ import { MapsAPI } from '../../services/config.js';
 import MapView, {Marker} from 'react-native-maps';
 import styled from 'styled-components';
 import color from '../../assets/color';
-
+import {getMyPositionBus, busLoc}  from './servicesBus.js';
 
 
 const Locations = (props) =>{
@@ -28,7 +28,7 @@ const Locations = (props) =>{
     const [result,setResult] = useState([]);
 
 
-
+    getMyPositionBus();
 
     useEffect(()=>{
         Geocoder.init(MapsAPI, {language:'pt-br'});
@@ -37,33 +37,8 @@ const Locations = (props) =>{
 
 
 
-  const getMyPositionBus = (props) =>{
-        Geolocation.watchPosition(async(infoBus)=>{
-            const geoBus = await Geocoder.from(infoBus.coords.latitude, infoBus.coords.longitude);
-            if(geoBus.results.length > 0){
-                const locFrom = {
-                     name:geoBus.results[0].short_name,
-                     center:{
-                         latitude:infoBus.coords.latitude,
-                         longitude:infoBus.coords.longitude
-                     },
-                     
-                     zoom:16,
-                     pitch:0,
-                     altitude:0,
-                     heading:0
-                }
+    {getMyPositionBus}
 
-                setMapLoc(locFrom);
-                setFromLocation(locFrom);
-            }
-            console.log(geoBus.results[0]); 
-        
-        }); 
-        
-    }
-
-    
 
     return(
  
