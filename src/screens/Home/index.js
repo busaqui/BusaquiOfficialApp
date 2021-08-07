@@ -26,13 +26,12 @@ import BusStopIcon from '../../assets/images/icons/busStop.png';
 import { ModalBusStopInfo } from '../../components/Home/ModalBusStopInfo/index.js';
 import { ReactButton } from 'react-native-gesture-handler';
 import { StackActions, NavigationActions } from 'react-navigation';
-import {getMyPositionBus } from './servicesBus';
+import locBus from './locationBus';
 
 
 
 const Home = (props) => {
 
-    
     let timer = (0);
     const map = useRef();
 
@@ -196,7 +195,7 @@ const Home = (props) => {
             );
     }
     // const handleFromClic = () => {
-    //     alert("Você clicou aqui!");
+    //     location:{lo}
     // }
     // const handleToClic = async () => {
     //     const geo = await Geocoder.from('Resende, RJ');
@@ -263,7 +262,7 @@ const Home = (props) => {
         }
 
     const handleCloseScroll = () => {
-        results.length(0);
+        clearTimeout(results.length);
         setResults(results.length);
     }
 
@@ -295,7 +294,7 @@ const Home = (props) => {
             ]
         }));
     }
-
+    console.log(locBus.locFrom);
 
     return (
         <Container>
@@ -332,11 +331,12 @@ const Home = (props) => {
                         />
                     </Marker>
                 }
-
-                {getMyPositionBus.locFrom.center && 
+                {locBus.locFrom.center &&
+                // {getMyPositionBus.locFrom.center && 
+        
                     
                     <Marker 
-                        coordinate={getMyPositionBus.locFrom.center} 
+                        coordinate={locBus.locFrom} 
                         anchor={{x: 0.5, y: 0.4}}
                         flat={true}
                         rotation={angleCar}
@@ -400,11 +400,11 @@ const Home = (props) => {
 
             </MapView>
 
-            <SearchBox dataClick={searchBoxClick} />
+            {/* <SearchBox dataClick={searchBoxClick} /> */}
 
 
 
-            {/* <SearchArea>
+            <SearchArea>
                 <Area>
                     <Menu>
                         <MenuIcon source={require('../../assets/images/icons/menuIcon.png')}></MenuIcon>
@@ -443,8 +443,8 @@ const Home = (props) => {
                         </>
                     }
                 
-                </SearchArea>
- */}
+            </SearchArea>
+ 
 
 
                 {/* <ViewButton >
