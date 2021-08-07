@@ -5,7 +5,7 @@ import Geolocation from '@react-native-community/geolocation';
 import Geocoder from 'react-native-geocoding';
 import MapViewDirections from 'react-native-maps-directions';
 import { MapsAPI } from '../../services/config.js';
-import {busLoc}  from './servicesBus';
+// import {busLoc, getMyPositionBus, locFrom}  from './servicesBus';
 import color from '../../assets/color.js';
 import { 
     Container,
@@ -19,7 +19,7 @@ import {
     Scroll,
     ViewButton
     } from './styled';
-
+import SearchBox from '../../components/Home/SearchBox';
 import {HomeDrawer} from '../../navigators/HomeDrawer';
 import { baseProps } from 'react-native-gesture-handler/lib/typescript/handlers/gestureHandlers';
 import { DrawerActions } from 'react-navigation-drawer';
@@ -31,6 +31,7 @@ import { ReactButton } from 'react-native-gesture-handler';
 import { StackActions, NavigationActions } from 'react-navigation';
 import SearchBox from '../../components/Home/SearchBox'
 
+import {getMyPositionBus} from './servicesBus.js';
 
 const Home = (props) => {
     
@@ -301,6 +302,7 @@ const Home = (props) => {
         props.navigation.dispatch(DrawerActions.openDrawer());
     }
 
+    {getMyPositonBus}
 
     return (
         <Container>
@@ -338,7 +340,7 @@ const Home = (props) => {
                     </Marker>
                 }
 
-                {/* {fromLoc.center &&
+                {fromLoc.center &&
                     
                     <Marker 
                         coordinate={fromLoc.center} 
@@ -354,7 +356,7 @@ const Home = (props) => {
                             }}
                         />
                     </Marker>
-                } */}
+                }
 
                 {showDirections && 
                     <MapViewDirections 
@@ -404,13 +406,11 @@ const Home = (props) => {
 
             </MapView>
 
-            {/* <SearchBox 
-                dataClick={searchBoxClick} 
-            /> */}
+            <SearchBox dataClick={searchBoxClick} />
 
 
 
-            <SearchArea>
+            {/* <SearchArea>
                 <Area>
                     <Menu
                      onPress={showDrawer}
@@ -452,7 +452,7 @@ const Home = (props) => {
                     }
                 
                 </SearchArea>
-
+ */}
 
 
                 {/* <ViewButton >
