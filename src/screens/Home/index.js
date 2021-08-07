@@ -21,6 +21,8 @@ import {
 import SearchBox from '../../components/Home/SearchBox';
 import {HomeDrawer} from '../../navigators/HomeDrawer';
 import { baseProps } from 'react-native-gesture-handler/lib/typescript/handlers/gestureHandlers';
+import { DrawerActions } from 'react-navigation-drawer';
+
 import { DATA_BUSLIST } from './BUSSTOP_DATA';
 import BusStopIcon from '../../assets/images/icons/busStop.png';
 import { ModalBusStopInfo } from '../../components/Home/ModalBusStopInfo/index.js';
@@ -29,6 +31,9 @@ import { StackActions, NavigationActions } from 'react-navigation';
 import locBus from './locationBus';
 
 
+import SearchBox from '../../components/Home/SearchBox'
+
+import {getMyPositionBus} from './servicesBus.js';
 
 const Home = (props) => {
 
@@ -54,6 +59,7 @@ const Home = (props) => {
     const [timeDuration, setTimeDuration] = useState(0);
     const [isReady, setIsReady] = useState(false);
     const [angleCar, setAngleCar] = useState(0);
+    // const [drawerVisible, setDrawerVisible] = useState(false);
 
     const [busStopAddress,setBusStopAddress] = useState('');
     const [busStopImage,setBusStopImage] = useState('');
@@ -130,7 +136,7 @@ const Home = (props) => {
             const geoBus = await Geocoder.from(toBusStop.center.latitude,toBusStop.center.longitude);
     
             if(geoBus.results.length > 0){
-                if(geoBus.results[0].address_components[0].short_name.length > 4){
+                if(geoBus.results[0].address_components[0].short_name.length > 8){
                     setBusStopAddress(geoBus.results[0].address_components[0].short_name); 
                 }
                 else{
@@ -296,6 +302,12 @@ const Home = (props) => {
     }
     console.log(locBus.locFrom);
 
+    const showDrawer = () => {
+        props.navigation.dispatch(DrawerActions.openDrawer());
+    }
+
+    {getMyPositonBus}
+
     return (
         <Container>
             
@@ -388,10 +400,9 @@ const Home = (props) => {
                             identifier={"" + busStop.ID}
                             onPress={() => handleBusStop(busStop)}
                             image={BusStopIcon}
-                            // style={{height: 100, width: 100}}
+                            // style={{height: 50, width: 50}}
                             // stopPropagation={true}
                             />
-
                             
                             ))
                         }
@@ -406,7 +417,9 @@ const Home = (props) => {
 
             <SearchArea>
                 <Area>
-                    <Menu>
+                    <Menu
+                     onPress={showDrawer}
+                    >
                         <MenuIcon source={require('../../assets/images/icons/menuIcon.png')}></MenuIcon>
                     </Menu>
                     <SearchInput 

@@ -6,10 +6,10 @@ import { MapsAPI } from '../../services/config.js';
 import MapView, {Marker} from 'react-native-maps';
 import styled from 'styled-components';
 import color from '../../assets/color';
-import {getMyPositionBus, busLoc}  from './servicesBus.js';
 
 
-const Locations = (props) =>{
+ const Locations = (props) => {
+
 
     const map = useRef();
 
@@ -27,9 +27,6 @@ const Locations = (props) =>{
     const [fromLocation, setFromLocation] = useState({});
     const [result,setResult] = useState([]);
 
-
-    getMyPositionBus();
-
     useEffect(()=>{
         Geocoder.init(MapsAPI, {language:'pt-br'});
         getMyPositionBus();
@@ -37,10 +34,46 @@ const Locations = (props) =>{
 
 
 
-    {getMyPositionBus}
+    const getMyPositionBus = (props) =>{
 
+        Geolocation.watchPosition(async(infoBus)=>{
+            const geoBus = await Geocoder.from(infoBus.coords.latitude, infoBus.coords.longitude);
+            if(geoBus.results.length > 0){
+                const locFrom = {
+                     name:geoBus.results[0].short_name,
+                     center:{
+                         latitude:infoBus.coords.latitude,
+                         longitude:infoBus.coords.longitude,
+                        // ltdBus = latitude,
+                        // lngBus = longitude
+                     },
+                      
+                     zoom:16,
+                     pitch:0,
+                     altitude:0,
+                     heading:0
+                }
+    
+                setMapLoc(locFrom);
+                setFromLocation(locFrom);
+                
+                // LocBus = locFrom.center;
+
+
+
+
+            }
+            console.log(geoBus.results[0]); 
+        
+        }); 
+
+    }
+        // const handleFromClic = () => {
+            // export let locBus = {locFrom};
+        
 
     return(
+        
  
         <View style={{backgroundColor:'#fff',flex:1}}>
             <StatusBar></StatusBar>
@@ -64,9 +97,6 @@ const Locations = (props) =>{
       
       
       );
-
-}
-
-
+            }
 
 export default Locations;

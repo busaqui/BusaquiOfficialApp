@@ -1,0 +1,5 @@
+criar uma variavel usando let 
+let valor1 = 10;
+
+proxima tela 
+console.log(valor1);
