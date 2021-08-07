@@ -5,7 +5,6 @@ import Geolocation from '@react-native-community/geolocation';
 import Geocoder from 'react-native-geocoding';
 import MapViewDirections from 'react-native-maps-directions';
 import { MapsAPI } from '../../services/config.js';
-// import {busLoc, getMyPositionBus, locFrom}  from './servicesBus';
 import color from '../../assets/color.js';
 import { 
     Container,
@@ -27,10 +26,12 @@ import BusStopIcon from '../../assets/images/icons/busStop.png';
 import { ModalBusStopInfo } from '../../components/Home/ModalBusStopInfo/index.js';
 import { ReactButton } from 'react-native-gesture-handler';
 import { StackActions, NavigationActions } from 'react-navigation';
-import {getMyPositionBus} from './servicesBus.js';
+import {getMyPositionBus } from './servicesBus';
+
+
 
 const Home = (props) => {
-    
+
     
     let timer = (0);
     const map = useRef();
@@ -176,6 +177,8 @@ const Home = (props) => {
                 setMapLoc(loc);
                 setFromLoc(loc);
 
+                console.log(setMapLoc);
+
                 
             }
             console.log(geo.results[0]);  
@@ -260,8 +263,8 @@ const Home = (props) => {
         }
 
     const handleCloseScroll = () => {
-        props.results(0);
-        setResults(results);
+        results.length(0);
+        setResults(results.length);
     }
 
     const handleBusStop = (busStopInfo) => {
@@ -293,7 +296,6 @@ const Home = (props) => {
         }));
     }
 
-    {getMyPositonBus}
 
     return (
         <Container>
@@ -331,10 +333,10 @@ const Home = (props) => {
                     </Marker>
                 }
 
-                {fromLoc.center &&
+                {getMyPositionBus.locFrom.center && 
                     
                     <Marker 
-                        coordinate={fromLoc.center} 
+                        coordinate={getMyPositionBus.locFrom.center} 
                         anchor={{x: 0.5, y: 0.4}}
                         flat={true}
                         rotation={angleCar}
