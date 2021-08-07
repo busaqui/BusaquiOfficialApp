@@ -7,7 +7,8 @@ import MapView, {Marker} from 'react-native-maps';
 import styled from 'styled-components';
 import color from '../../assets/color';
 
-
+let ltg = 0 
+let ltn = 0
  const Locations = (props) => {
 
 

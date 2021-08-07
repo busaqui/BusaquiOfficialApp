@@ -28,12 +28,8 @@ import BusStopIcon from '../../assets/images/icons/busStop.png';
 import { ModalBusStopInfo } from '../../components/Home/ModalBusStopInfo/index.js';
 import { ReactButton } from 'react-native-gesture-handler';
 import { StackActions, NavigationActions } from 'react-navigation';
-import locBus from './locationBus';
+import {fromLocation} from './locationBus';
 
-
-import SearchBox from '../../components/Home/SearchBox'
-
-import {getMyPositionBus} from './servicesBus.js';
 
 const Home = (props) => {
 
@@ -300,13 +296,11 @@ const Home = (props) => {
             ]
         }));
     }
-    console.log(locBus.locFrom);
 
     const showDrawer = () => {
-        props.navigation.dispatch(DrawerActions.openDrawer());
+        // props.navigation.dispatch(DrawerActions.openDrawer());
+        console.log('ESTE AQUI ===>' + fromLocation.center);
     }
-
-    {getMyPositonBus}
 
     return (
         <Container>
@@ -343,12 +337,12 @@ const Home = (props) => {
                         />
                     </Marker>
                 }
-                {locBus.locFrom.center &&
+                {/* {locBus &&
                 // {getMyPositionBus.locFrom.center && 
         
                     
                     <Marker 
-                        coordinate={locBus.locFrom} 
+                        coordinate={locBus} 
                         anchor={{x: 0.5, y: 0.4}}
                         flat={true}
                         rotation={angleCar}
@@ -361,7 +355,7 @@ const Home = (props) => {
                             }}
                         />
                     </Marker>
-                }
+                } */}
 
                 {showDirections && 
                     <MapViewDirections 
