@@ -29,10 +29,16 @@ import BusStopIcon from '../../assets/images/icons/busStop.png';
 import { ModalBusStopInfo } from '../../components/Home/ModalBusStopInfo/index.js';
 import { ReactButton } from 'react-native-gesture-handler';
 import { StackActions, NavigationActions } from 'react-navigation';
-import SearchBox from '../../components/Home/SearchBox'
+import io from 'socket.io-client/dist/socket.io';
+// import {getMyPositionBus} from './servicesBus.js';
 
-import {getMyPositionBus} from './servicesBus.js';
 
+
+// socket.on('connect', () => {
+    //     console.log('socketId: '+ socket.id);
+    // });
+
+    
 const Home = (props) => {
     
     
@@ -58,7 +64,7 @@ const Home = (props) => {
     const [timeDuration, setTimeDuration] = useState(0);
     const [isReady, setIsReady] = useState(false);
     const [angleCar, setAngleCar] = useState(0);
-    // const [drawerVisible, setDrawerVisible] = useState(false);
+    const [busLoc, setBusLoc] = useState({});
 
     const [busStopAddress,setBusStopAddress] = useState('');
     const [busStopImage,setBusStopImage] = useState('');
@@ -76,16 +82,33 @@ const Home = (props) => {
         altitude:0,
         heading:0
     });
-
+    
     const [results, setResults ] = useState([]);
     const [searchText, setSearchText] = useState('');
     
-     useEffect(()=>{
+    const socket = io('http://10.0.2.2:4000', {
+        // jsonp: false,
+        transports: ['websocket'],
+    });
+    
+    // socket.on('connect', () => {
+    //     console.log('connected!');
+    //   });
+
+    socket.on('busLocReenvite', (busLocReceived) => {
+        // console.log('3');
+        setBusLoc(busLocReceived);
+        // console.log(busLoc);
+    });
+    
+
+    
+    useEffect(()=>{
         Geocoder.init(MapsAPI, {language:'pt-br'});
         getMyCurrentPosition();
     });
-
-     useEffect(()=>{
+    
+    useEffect(()=>{
         if(fromLoc.center && toLoc.center) {
             setShowDirections(true);
         }
@@ -104,10 +127,10 @@ const Home = (props) => {
                         clearTimeout(timer);
                     }
                     timer = setTimeout(async()=>{
-                        console.log("Efetuando a pesquisa");
+                        // console.log("Efetuando a pesquisa");
         
                         const geo = await Geocoder.from(searchText);
-                            console.log("Resultado:", geo.results.length);
+                            // console.log("Resultado:", geo.results.length);
         
                             
                             if(geo.results.length > 0) {
@@ -162,7 +185,7 @@ const Home = (props) => {
     }
     const getMyCurrentPosition = (props) => {
             Geolocation.watchPosition(async (info)=>{
-                console.log("COORDENADAS: ",info.coords);
+                // console.log("COORDENADAS: ",info.coords);
                 const geo = await Geocoder.from(info.coords.latitude, info.coords.longitude);
 
                 if(geo.results.length > 0){
@@ -183,7 +206,7 @@ const Home = (props) => {
 
                 
             }
-            console.log(geo.results[0]);  
+            // console.log(geo.results[0]);  
 
 
             },  
@@ -195,7 +218,7 @@ const Home = (props) => {
                 enableHighAccuracy:true,
                 // maximumAge:1000
             }
-            );
+        );
     }
     // const handleFromClic = () => {
     //     alert("Você clicou aqui!");
@@ -302,7 +325,7 @@ const Home = (props) => {
         props.navigation.dispatch(DrawerActions.openDrawer());
     }
 
-    {getMyPositonBus}
+    // {getMyPositonBus}
 
     return (
         <Container>
@@ -340,10 +363,10 @@ const Home = (props) => {
                     </Marker>
                 }
 
-                {fromLoc.center &&
+                {busLoc.center &&
                     
                     <Marker 
-                        coordinate={fromLoc.center} 
+                        coordinate={busLoc.center} 
                         anchor={{x: 0.5, y: 0.4}}
                         flat={true}
                         rotation={angleCar}

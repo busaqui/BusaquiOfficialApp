@@ -6,8 +6,8 @@ import { MapsAPI } from '../../services/config.js';
 import MapView, {Marker} from 'react-native-maps';
 import styled from 'styled-components';
 import color from '../../assets/color';
-import {getMyPositionBus, busLoc}  from './servicesBus.js';
-
+import io from 'socket.io-client';
+// import {getMyPositionBus, busLoc}  from './servicesBus.js';
 
 const Locations = (props) =>{
 
@@ -24,20 +24,69 @@ const Locations = (props) =>{
         heading:0
     });
 
-    const [fromLocation, setFromLocation] = useState({});
+    const [busLoc, setBusLoc] = useState({});
     const [result,setResult] = useState([]);
 
 
-    getMyPositionBus();
+    const socket = io('http://10.0.2.2:4000', {
+        // jsonp: false,
+        transports: ['websocket'],
+    });
+    
+    // socket.connect();
+    
+    // socket.on('connect', () => {
+    //     console.log('socketId: '+ socket.id);
+    // });
+
 
     useEffect(()=>{
         Geocoder.init(MapsAPI, {language:'pt-br'});
         getMyPositionBus();
     });
 
+    useEffect(()=>{
+        // console.log('1');
+        socket.emit('busLocInvite',busLoc);
+    },[busLoc]);
+
+    const getMyPositionBus = (props) => {
+        Geolocation.watchPosition(async (info)=>{
+            // console.log("COORDENADAS: ",info.coords);
+            const geo = await Geocoder.from(info.coords.latitude, info.coords.longitude);
+
+            if(geo.results.length > 0){
+               const loc = {
+                    name:geo.results[0].formatted_address,
+                    center:{
+                        latitude:info.coords.latitude,
+                        longitude:info.coords.longitude
+                    },
+                    
+                    zoom:18,
+                    pitch:0,
+                    altitude:0,
+                    heading:0
+            };
+            setMapLoc(loc);
+            setBusLoc(loc);
+
+            
+            }
+            // console.log(geo.results[0]);  
 
 
-    {getMyPositionBus}
+            },  
+            (error)=>{
+                ()=>alert("Erro em encontrar sua localização");
+            },
+            {
+                // timeout:2000,
+                enableHighAccuracy:true,
+                // maximumAge:1000
+            }
+        );
+    }
 
 
     return(
@@ -51,9 +100,9 @@ const Locations = (props) =>{
             camera={maploc}
             >
 
-               {fromLocation.center && 
+               {busLoc.center && 
                <MapView.Marker
-                coordinate={fromLocation.center}
+                coordinate={busLoc.center}
                 pinColor='black'
                 />
                }
