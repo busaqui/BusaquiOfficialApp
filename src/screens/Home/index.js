@@ -5,7 +5,6 @@ import Geolocation from '@react-native-community/geolocation';
 import Geocoder from 'react-native-geocoding';
 import MapViewDirections from 'react-native-maps-directions';
 import { MapsAPI } from '../../services/config.js';
-// import {busLoc, getMyPositionBus, locFrom}  from './servicesBus';
 import color from '../../assets/color.js';
 import { 
     Container,
@@ -40,8 +39,7 @@ import io from 'socket.io-client/dist/socket.io';
 
     
 const Home = (props) => {
-    
-    
+
     let timer = (0);
     const map = useRef();
 
@@ -204,6 +202,8 @@ const Home = (props) => {
                 setMapLoc(loc);
                 setFromLoc(loc);
 
+                console.log(setMapLoc);
+
                 
             }
             // console.log(geo.results[0]);  
@@ -221,7 +221,7 @@ const Home = (props) => {
         );
     }
     // const handleFromClic = () => {
-    //     alert("Você clicou aqui!");
+    //     location:{lo}
     // }
     // const handleToClic = async () => {
     //     const geo = await Geocoder.from('Resende, RJ');
@@ -288,8 +288,8 @@ const Home = (props) => {
         }
 
     const handleCloseScroll = () => {
-        props.results(0);
-        setResults(results);
+        clearTimeout(results.length);
+        setResults(results.length);
     }
 
     const handleBusStop = (busStopInfo) => {
@@ -322,7 +322,8 @@ const Home = (props) => {
     }
 
     const showDrawer = () => {
-        props.navigation.dispatch(DrawerActions.openDrawer());
+        // props.navigation.dispatch(DrawerActions.openDrawer());
+        console.log('ESTE AQUI ===>' + fromLocation.center);
     }
 
     // {getMyPositonBus}
@@ -429,11 +430,11 @@ const Home = (props) => {
 
             </MapView>
 
-            <SearchBox dataClick={searchBoxClick} />
+            {/* <SearchBox dataClick={searchBoxClick} /> */}
 
 
 
-            {/* <SearchArea>
+            <SearchArea>
                 <Area>
                     <Menu
                      onPress={showDrawer}
@@ -474,8 +475,8 @@ const Home = (props) => {
                         </>
                     }
                 
-                </SearchArea>
- */}
+            </SearchArea>
+ 
 
 
                 {/* <ViewButton >

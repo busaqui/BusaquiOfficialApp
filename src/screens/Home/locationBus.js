@@ -9,7 +9,7 @@ import color from '../../assets/color';
 import io from 'socket.io-client';
 // import {getMyPositionBus, busLoc}  from './servicesBus.js';
 
-const Locations = (props) =>{
+const Locations = (props) => {
 
     const map = useRef();
 
@@ -87,9 +87,12 @@ const Locations = (props) =>{
             }
         );
     }
-
+        // const handleFromClic = () => {
+            // export let locBus = {locFrom};
+        
 
     return(
+        
  
         <View style={{backgroundColor:'#fff',flex:1}}>
             <StatusBar></StatusBar>
@@ -112,10 +115,7 @@ const Locations = (props) =>{
         </View>
       
       
-      );
-
+    );
 }
-
-
 
 export default Locations;

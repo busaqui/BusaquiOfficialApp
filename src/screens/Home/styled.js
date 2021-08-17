@@ -36,7 +36,7 @@ export const Area = styled.View`
     justify-content:center;
     align-items:center; 
 `;
-export const Menu = styled.TouchableOpacity`
+export const Menu = styled.TouchableHighlight`
     height:42px;
     width:12%;
     justify-content:center;

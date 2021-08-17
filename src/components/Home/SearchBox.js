@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { View, Text, TextInput, StyleSheet, ScrollView, Image, TouchableOpacity } from 'react-native';
-import color from '../../assets/color';
+import { View, Text, TextInput, StyleSheet, ScrollView, TouchableHighlight } from 'react-native';
 import { makeLocationSearch } from '../../services/useAppBusaquiApi';
 import { SearchBoxItem } from '../SearchBoxItem';
-import {DrawerActions} from 'react-navigation-drawer'
+
 export default class SearchBox extends Component {
     timer = null;
     constructor(props) {
@@ -14,7 +13,6 @@ export default class SearchBox extends Component {
         }
         this.txtFill = this.txtFill.bind(this);
         this.doSearch = this.doSearch.bind(this);
-        this.callDrawer = this.callDrawer.bind(this);
     }
     txtFill(text){
         this.setState({txt:text, results:[]});
@@ -33,23 +31,11 @@ export default class SearchBox extends Component {
                 alert("OCORREU UM ERRO.")
             });
     }
-    callDrawer(){
-        this.props.navigation.openDrawer();
-    }
     
     render() {
         return (
             <View style={styles.container}>
-                <View style={styles.box}>
-                    <TouchableOpacity
-                        style={styles.menu}
-                        onPress={this.callDrawer}
-                    >
-                        <Image 
-                            source={require('../../assets/images/icons/menuIcon.png')}
-                            style={styles.menuIcon}
-                        />
-                    </TouchableOpacity>
+                <View style={[styles.box]}>
                     <TextInput style={styles.input} value={this.state.txt} onChangeText={this.txtFill} placeholder="Para onde você quer ir?" />
                 </View>
                 {this.state.results.length > 0 &&
@@ -98,17 +84,14 @@ const styles = StyleSheet.create({
         shadowColor:'#000000',
         shadowOpacity:0.2,
         shadowRadius:5,
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center'
         
     },
     input:{
-        width:'85%',
+        width:'100%',
         height:'100%',
         padding: 10,
         fontSize:19,
-        color:'#000',
+        color:'#000'
     },
     results:{
         width:'90%',
@@ -125,16 +108,5 @@ const styles = StyleSheet.create({
     },
     itemTxt: {
         fontSize:15
-    },
-    menu: {
-        height:42,
-        width:'15%',
-        justifyContent:'center',
-        alignItems:'center',
-        // backgroundColor: 'red',  
-    },
-    menuIcon: {
-        height:24,
-        width:24,
     }
 });
