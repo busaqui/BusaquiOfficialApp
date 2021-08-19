@@ -28,7 +28,7 @@ const Locations = (props) => {
     const [result,setResult] = useState([]);
 
 
-    const socket = io('http://10.0.2.2:4000', {
+    const socket = io('http://192.168.18.2:4000', {
         // jsonp: false,
         transports: ['websocket'],
     });
