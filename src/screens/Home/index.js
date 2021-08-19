@@ -120,7 +120,7 @@ const Home = (props) => {
     },[toBusStop]);
 
     useEffect(()=>{
-        props.results(0);
+        setResults(0);
         setResults(results);
     },[toLoc]);
 
@@ -233,27 +233,7 @@ const Home = (props) => {
             }
         );
     }
-    // const handleFromClic = () => {
-    //     location:{lo}
-    // }
-    // const handleToClic = async () => {
-    //     const geo = await Geocoder.from('Resende, RJ');
-    //     if(geo.results.length > 0) {
-    //         const loc = {
-    //             name:geo.results[0].formatted_address,
-    //             center:{
-    //                 latitude:geo.results[0].geometry.location.lat,
-    //                 longitude:geo.results[0] .geometry.location.lng
-    //             },
-    //             zoom:18,
-    //             pitch:0,
-    //             altitude:0,
-    //             heading:0
-    //         };
-    //         setToLoc(loc);
-    //     }
-        
-    // }
+
 
     const handleDirectionsReady = (r) => {
         console.log("FUNCIONALIDADES: ", r.coordinates); 
@@ -300,10 +280,6 @@ const Home = (props) => {
     
         }
 
-    // const handleCloseScroll = () => {
-    //     props.results(0);
-    //     setResults(results);
-    // }
 
     const handleBusStop = (busStopInfo) => {
 
@@ -326,13 +302,10 @@ const Home = (props) => {
     
 
     const showDrawer = () => {
-        // props.navigation.dispatch(DrawerActions.openDrawer());
+
         props.navigation.dispatch(DrawerActions.openDrawer());
-        
-        // console.log('ESTE AQUI ===>' + fromLocation.center);
     }
 
-    // {getMyPositonBus}
 
     return (
         <Container>
@@ -414,7 +387,7 @@ const Home = (props) => {
                     />
                 }
 
-                {directionsBus && 
+                {/* {directionsBus && 
                     <MapViewDirections 
                         apikey={MapsAPI}
                         origin={busLoc.center}
@@ -422,7 +395,7 @@ const Home = (props) => {
                         strokeColor='transparent'
                         mode="DRIVER"
                     />
-                }
+                } */}
 
                 {
                     DATA_BUSLIST.map((busStop) => (
