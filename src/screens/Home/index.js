@@ -69,6 +69,7 @@ const Home = (props) => {
     const [busStopTime,setBusStopTime] = useState(0);
     const [showBusStopDirection, setShowBusStopDirection] = useState(false);
     const [busStopVisible, setBusStopVisible] = useState(false);
+    const [directionsBus, setDirectionsBus] = useState(false);
     const [toBusStop,setToBusStop] = useState({
         center:{
             latitude:57.78825,
@@ -114,6 +115,18 @@ const Home = (props) => {
             setShowBusStopDirection(true);
         }
     },[toBusStop]);
+
+    useEffect(()=>{
+        props.results(0);
+        setResults(results);
+    },[toLoc]);
+
+    useEffect(()=>{
+        if(busLoc.center){
+        setDirectionsBus(true);
+        }
+    },[busLoc]);
+
 
     useEffect(()=>{
     
@@ -271,10 +284,10 @@ const Home = (props) => {
     
     }
 
-    const handleCloseScroll = () => {
-        clearTimeout(results.length);
-        setResults(results.length);
-    }
+    // const handleCloseScroll = () => {
+    //     props.results(0);
+    //     setResults(results);
+    // }
 
     const handleBusStop = (busStopInfo) => {
 
@@ -380,6 +393,16 @@ const Home = (props) => {
                     />
                 }
 
+                {directionsBus && 
+                    <MapViewDirections 
+                        apikey={MapsAPI}
+                        origin={busLoc.center}
+                        destination={toBusStop.center}
+                        strokeColor='transparent'
+                        mode="DRIVER"
+                    />
+                }
+
                 {
                     DATA_BUSLIST.map((busStop) => (
 
@@ -424,10 +447,6 @@ const Home = (props) => {
                 
                     
                     {results.length > 0 &&
-                    <>
-                        <TouchableOpacity 
-                        onPress={handleCloseScroll}
-                        ></TouchableOpacity>
                             <Scroll
                             
                             >
@@ -444,7 +463,7 @@ const Home = (props) => {
                                     );
                                 })}    
                             </Scroll>
-                        </>
+
                     }
                 
             </SearchArea>
