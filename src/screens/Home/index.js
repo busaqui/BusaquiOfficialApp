@@ -29,7 +29,6 @@ import { ModalBusStopInfo } from '../../components/Home/ModalBusStopInfo/index.j
 import { ReactButton } from 'react-native-gesture-handler';
 import { StackActions, NavigationActions } from 'react-navigation';
 import io from 'socket.io-client/dist/socket.io';
-// import {getMyPositionBus} from './servicesBus.js';
 
 
 
@@ -85,8 +84,8 @@ const Home = (props) => {
     const [results, setResults ] = useState([]);
     const [searchText, setSearchText] = useState('');
     
-    const socket = io('http://10.0.2.2:4000', {
-        // jsonp: false,
+    const socket = io('http://192.168.29.69:4000', {
+        // jsonp: false,'10.0.2.2'
         transports: ['websocket'],
     });
     
@@ -121,7 +120,6 @@ const Home = (props) => {
 
     useEffect(()=>{
         setResults(0);
-        setResults(results);
     },[toLoc]);
 
     useEffect(()=>{
@@ -299,10 +297,10 @@ const Home = (props) => {
         setBusStopModal(true);
         setBusStopVisible(true);
     }
-    
+
 
     const showDrawer = () => {
-
+console.log('Bus:',directionsBus);
         props.navigation.dispatch(DrawerActions.openDrawer());
     }
 
@@ -387,7 +385,7 @@ const Home = (props) => {
                     />
                 }
 
-                {/* {directionsBus && 
+                {directionsBus && 
                     <MapViewDirections 
                         apikey={MapsAPI}
                         origin={busLoc.center}
@@ -395,7 +393,8 @@ const Home = (props) => {
                         strokeColor='transparent'
                         mode="DRIVER"
                     />
-                } */}
+                    
+                }
 
                 {
                     DATA_BUSLIST.map((busStop) => (
@@ -420,8 +419,6 @@ const Home = (props) => {
             </MapView>
 
             {/* <SearchBox dataClick={searchBoxClick} /> */}
-
-
 
             <SearchArea>
                 <Area>
@@ -461,22 +458,7 @@ const Home = (props) => {
                     }
                 
             </SearchArea>
- 
 
-
-                {/* <ViewButton >
-                        <TouchableOpacity style={{width:120,height:30}} onPress={}>
-
-                        <TouchableOpacity
-                            style={{width:120,height:30}}
-                            onPress={handleLocationBus}
-                        >
-
-                            <Text>Tela locationBus</Text>
-                        </TouchableOpacity>
-                        
-                        
-                </ViewButton> */}
 
             {busStopModal &&
             
