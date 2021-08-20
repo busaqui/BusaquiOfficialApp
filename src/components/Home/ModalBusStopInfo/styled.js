@@ -1,5 +1,6 @@
 import styled from 'styled-components/native';
 import color from '../../../assets/color';
+import {DATA_BUSLIST} from '../../../screens/Home/BUSSTOP_DATA';
 
 export const Container = styled.View`
     flex:1;
@@ -46,7 +47,7 @@ export const BusStopImage = styled.View`
     border-radius: 8px;
     /* margin-top: 29px; */
     align-self: center;
-    background-color: red;
+    background-image: ${DATA_BUSLIST.push.image};
 `;
 
 export const HeaderLine = styled.View`

@@ -60,9 +60,9 @@ export const ModalBusStopInfo = (props) => {
 
     useEffect(()=>{
         if(time > 60){
-            setImprovedTime(horas + "h "+minutos+"min")
+            setImprovedTime(horas + "h "+minutos+" min")
         }else if(time = 60){
-            setImprovedTime(1+"h")
+            setImprovedTime(1+" h")
         }
     },[minutos, horas])
 

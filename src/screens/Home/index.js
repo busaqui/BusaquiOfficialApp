@@ -29,7 +29,6 @@ import { ModalBusStopInfo } from '../../components/Home/ModalBusStopInfo/index.j
 import { ReactButton } from 'react-native-gesture-handler';
 import { StackActions, NavigationActions } from 'react-navigation';
 import io from 'socket.io-client/dist/socket.io';
-// import {getMyPositionBus} from './servicesBus.js';
 
 
 
@@ -84,8 +83,8 @@ const Home = (props) => {
     const [searchText, setSearchText] = useState('');
     const [results, setResults ] = useState([]);
     
-    const socket = io('http://192.168.18.2:4000', {
-        // jsonp: false,
+    const socket = io('http://192.168.29.69:4000', {
+        // jsonp: false,'10.0.2.2'
         transports: ['websocket'],
     });
     
@@ -218,27 +217,7 @@ const Home = (props) => {
             enableHighAccuracy:true,
         });
     }
-    // const handleFromClic = () => {
-    //     location:{lo}
-    // }
-    // const handleToClic = async () => {
-    //     const geo = await Geocoder.from('Resende, RJ');
-    //     if(geo.results.length > 0) {
-    //         const loc = {
-    //             name:geo.results[0].formatted_address,
-    //             center:{
-    //                 latitude:geo.results[0].geometry.location.lat,
-    //                 longitude:geo.results[0] .geometry.location.lng
-    //             },
-    //             zoom:18,
-    //             pitch:0,
-    //             altitude:0,
-    //             heading:0
-    //         };
-    //         setToLoc(loc);
-    //     }
-        
-    // }
+
 
     const handleDirectionsReady = (r) => {
         // console.log("FUNCIONALIDADES: ", r.coordinates); 
@@ -284,10 +263,6 @@ const Home = (props) => {
     
     }
 
-    // const handleCloseScroll = () => {
-    //     props.results(0);
-    //     setResults(results);
-    // }
 
     const handleBusStop = (busStopInfo) => {
 
@@ -399,6 +374,7 @@ const Home = (props) => {
                         strokeColor='transparent'
                         mode="DRIVER"
                     />
+                    
                 }
 
                 {
@@ -424,8 +400,6 @@ const Home = (props) => {
             </MapView>
 
             {/* <SearchBox dataClick={searchBoxClick} /> */}
-
-
 
             <SearchArea>
                 <Area>
@@ -465,22 +439,7 @@ const Home = (props) => {
                     }
                 
             </SearchArea>
- 
 
-
-                {/* <ViewButton >
-                        <TouchableOpacity style={{width:120,height:30}} onPress={}>
-
-                        <TouchableOpacity
-                            style={{width:120,height:30}}
-                            onPress={handleLocationBus}
-                        >
-
-                            <Text>Tela locationBus</Text>
-                        </TouchableOpacity>
-                        
-                        
-                </ViewButton> */}
 
             {busStopVisible &&
             

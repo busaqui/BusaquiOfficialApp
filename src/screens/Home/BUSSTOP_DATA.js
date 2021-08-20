@@ -1,3 +1,5 @@
+// import { ImageBackground } from "react-native";
+
 export const DATA_BUSLIST = [
 
     { 
@@ -332,7 +334,7 @@ export const DATA_BUSLIST = [
       ID: 124,
       //"photo": "ponto 1",// Ponto Graal 
   
-      address: "Rua cinco - 342 - Paraíso, Resende - RJ, Brasil", 
+      // address: "Rua cinco - 342 - Paraíso, Resende - RJ, Brasil", 
       center:{
           longitude: -44.44116, 
           latitude: -22.45864, 
@@ -599,7 +601,7 @@ export const DATA_BUSLIST = [
       ID: 142,
       //"photo": "ponto 20", 
   
-      address: " Avenida Juscelino Kubitscheck, 259, Vila Hulda Rocha, Resende- RJ, Brasil", 
+      // address: " Avenida Juscelino Kubitscheck, 259, Vila Hulda Rocha, Resende- RJ, Brasil", 
    center:{
        longitude: -44.7180, 
        latitude: -22.47195, 
@@ -724,6 +726,9 @@ export const DATA_BUSLIST = [
   
       ID: 151,
       //"photo": "ponto 29", 
+      
+      image:require('../../assets/images/icons/Erro.png')
+      ,
   
     //   address: "Estrada Resende Riachuelo, 848, Mirante das Agulhas, Resende-RJ, Brasil", 
       center:{
