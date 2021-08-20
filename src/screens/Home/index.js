@@ -66,7 +66,6 @@ const Home = (props) => {
     const [busStopAddress,setBusStopAddress] = useState('');
     const [busStopImage,setBusStopImage] = useState('');
     const [busStopTime,setBusStopTime] = useState(0);
-    const [busStopModal,setBusStopModal] = useState(false);
     const [showBusStopDirection, setShowBusStopDirection] = useState(false);
     const [busStopVisible, setBusStopVisible] = useState(false);
     const [directionsBus, setDirectionsBus] = useState(false);
@@ -81,8 +80,8 @@ const Home = (props) => {
         heading:0
     });
     
-    const [results, setResults ] = useState([]);
     const [searchText, setSearchText] = useState('');
+    const [results, setResults ] = useState([]);
     
     const socket = io('http://192.168.29.69:4000', {
         // jsonp: false,'10.0.2.2'
@@ -94,9 +93,7 @@ const Home = (props) => {
     //   });
 
     socket.on('busLocReenvite', (busLocReceived) => {
-        // console.log('3');
         setBusLoc(busLocReceived);
-        // console.log(busLoc);
     });
     
 
@@ -131,39 +128,36 @@ const Home = (props) => {
 
     useEffect(()=>{
     
-                if(searchText){
-                    if(timer){
-                        clearTimeout(timer);
-                    }
-                    timer = setTimeout(async()=>{
-                        // console.log("Efetuando a pesquisa");
-        
-                        const geo = await Geocoder.from(searchText);
-                            // console.log("Resultado:", geo.results.length);
-        
-                            
-                            if(geo.results.length > 0) {
-                                let tmResults = [];
-                                for(let i in geo.results){
-                                    tmResults.push({
-                                        address:geo.results[i].formatted_address,
-                                        latitude:geo.results[i].geometry.location.lat,
-                                        longitude:geo.results[i].geometry.location.lng
-                                    });
-                                }
-                                setResults(tmResults);
-                            } else {
-                                setResults([]);
-                            }
-                    }, 1000);
-                            
+            if(searchText){
+                if(timer){
+                    clearTimeout(timer);
                 }
-        }, [searchText]);
+                timer = setTimeout(async()=>{
+                    // console.log("Efetuando a pesquisa");
+    
+                    const geo = await Geocoder.from(searchText);
+                        // console.log("Resultado:", geo.results.length);
+    
+                        
+                        if(geo.results.length > 0) {
+                            let tmResults = [];
+                            for(let i in geo.results){
+                                tmResults.push({
+                                    address:geo.results[i].formatted_address,
+                                    latitude:geo.results[i].geometry.location.lat,
+                                    longitude:geo.results[i].geometry.location.lng
+                                });
+                            }
+                            setResults(tmResults);
+                        } else {
+                            setResults([]);
+                        }
+                }, 1000);
+                        
+            }
+    }, [searchText]);
 
         useEffect(async() => {
-            // if(toBusStop) {
-                
-            // }
             const geoBus = await Geocoder.from(toBusStop.center.latitude,toBusStop.center.longitude);
     
             if(geoBus.results.length > 0){
@@ -174,10 +168,8 @@ const Home = (props) => {
                     setBusStopAddress(geoBus.results[0].formatted_address);
                 }
     
-                // setBusStopAddress(geoBus.results[0].formatted_address);
 
-            }
-            // console.log(geoBus.results[0]);  
+            } 
                 
         },[toBusStop])
                     
@@ -193,48 +185,41 @@ const Home = (props) => {
         return Math.atan2(dy, dx) * 180 / Math.PI
     }
     const getMyCurrentPosition = (props) => {
-            Geolocation.watchPosition(async (info)=>{
-                // console.log("COORDENADAS: ",info.coords);
-                const geo = await Geocoder.from(info.coords.latitude, info.coords.longitude);
+        Geolocation.watchPosition(async (info)=>{
+            // console.log("COORDENADAS: ",info.coords);
+            const geo = await Geocoder.from(info.coords.latitude, info.coords.longitude);
 
-                if(geo.results.length > 0){
-                   const loc = {
-                        name:geo.results[0].formatted_address,
-                        center:{
-                            latitude:info.coords.latitude,
-                            longitude:info.coords.longitude
-                        },
-                        
-                        zoom:18,
-                        pitch:0,
-                        altitude:0,
-                        heading:0
+            if(geo.results.length > 0){
+                const loc = {
+                    name:geo.results[0].formatted_address,
+                    center:{
+                        latitude:info.coords.latitude,
+                        longitude:info.coords.longitude
+                    },
+                    
+                    zoom:18,
+                    pitch:0,
+                    altitude:0,
+                    heading:0
                 };
                 setMapLoc(loc);
                 setFromLoc(loc);
 
-                console.log(setMapLoc);
+                // console.log(setMapLoc);
 
-                
             }
-            // console.log(geo.results[0]);  
-
-
-            },  
-            (error)=>{
-                ()=>alert("Erro em encontrar sua localização");
-            },
-            {
-                // timeout:2000,
-                enableHighAccuracy:true,
-                // maximumAge:1000
-            }
-        );
+        },  
+        (error)=>{
+            ()=>alert("Erro em encontrar sua localização");
+        },
+        {
+            enableHighAccuracy:true,
+        });
     }
 
 
     const handleDirectionsReady = (r) => {
-        console.log("FUNCIONALIDADES: ", r.coordinates); 
+        // console.log("FUNCIONALIDADES: ", r.coordinates); 
         setRequestDistance( r.distance );
         setRequestTime( r.time );
         setTimeDuration( r.duration );
@@ -251,7 +236,7 @@ const Home = (props) => {
           setIsReady(true)
         }
 
-        console.log("Resultado: ", r);
+        // console.log("Resultado: ", r);
 
         if(r.coordinates.length >= 2) {
           let angle = calculateAngle(r.coordinates)
@@ -272,16 +257,15 @@ const Home = (props) => {
             altitude:0,
             heading:0
         };
-        console.log(toLocation);
-        setMapLoc(toLocation);
+        // console.log(toLocation);
         setToLoc(toLocation);
     
-        }
+    }
 
 
     const handleBusStop = (busStopInfo) => {
 
-        setBusStopAddress(busStopInfo.address);
+        // setBusStopAddress(busStopInfo.address);
         
         setToBusStop({
             center: {
@@ -294,13 +278,10 @@ const Home = (props) => {
             heading: 0
         });
 
-        setBusStopModal(true);
         setBusStopVisible(true);
     }
 
-
     const showDrawer = () => {
-console.log('Bus:',directionsBus);
         props.navigation.dispatch(DrawerActions.openDrawer());
     }
 
@@ -460,7 +441,7 @@ console.log('Bus:',directionsBus);
             </SearchArea>
 
 
-            {busStopModal &&
+            {busStopVisible &&
             
                 <ModalBusStopInfo
                 address={busStopAddress}
