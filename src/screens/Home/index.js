@@ -115,9 +115,10 @@ const Home = (props) => {
         }
     },[toBusStop]);
 
-    useEffect(()=>{
-        setResults(0);
-    },[toLoc]);
+    // useEffect(()=>{
+    //     props.results(0);
+    //     setResults(results);
+    // },[toLoc]);
 
     useEffect(()=>{
         if(busLoc.center){
@@ -284,7 +285,6 @@ const Home = (props) => {
     const showDrawer = () => {
         props.navigation.dispatch(DrawerActions.openDrawer());
     }
-
 
     return (
         <Container>
