@@ -35,8 +35,8 @@ export const BusInfoCard = (props) => {
 
             <LogoContainer>
                 <LogoRoute
-                source={IsPressed ? require('../../assets/Images/Icons/WhiteBusNumber.png')
-                        : require('../../assets/Images/Icons/BlackBusNumber.png')}
+                source={IsPressed ? require('../../assets/images/icons/whiteBusNumber.png')
+                        : require('../../assets/images/icons/blackBusNumber.png')}
                 />
 
                 <BusNumber 
