@@ -131,28 +131,29 @@ export const ModalBusTime = (props) => {
                                     />
 
                                 </>}
-                            <TouchableOpacity
-                                style={{
-                                    backgroundColor: color.Azul,
-                                    width:207,
-                                    height:48,
-                                    justifyContent: 'center',
-                                    alignItems: 'center',
-                                    borderRadius: 8,
-                                    marginHorizontal: 11
-                                }}
-                                onPress={handleCloseModal}
-                            >
-                                <Text
+                                {BusDistance < 100 &&
+                                <TouchableOpacity
                                     style={{
-                                        color: color.Branco,
-                                        fontFamily: 'Montserrat-Medium',
-                                        fontSize: 16
+                                        backgroundColor: color.Azul,
+                                        width:207,
+                                        height:48,
+                                        justifyContent: 'center',
+                                        alignItems: 'center',
+                                        borderRadius: 8,
+                                        marginHorizontal: 11
                                     }}
+                                    onPress={handleCloseModal}
                                 >
-                                    Confirmar embarque
-                                </Text>
-                            </TouchableOpacity>
+                                    <Text
+                                        style={{
+                                            color: color.Branco,
+                                            fontFamily: 'Montserrat-Medium',
+                                            fontSize: 16
+                                        }}
+                                    >
+                                        Confirmar embarque
+                                    </Text>
+                                </TouchableOpacity>}
                         </View>
 
                         <TouchableOpacity
