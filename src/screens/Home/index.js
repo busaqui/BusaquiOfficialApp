@@ -333,23 +333,6 @@ const Home = (props) => {
                     />
                 }
                 
-                {toLoc.center &&
-                    
-                    <Marker 
-                        coordinate={fromLoc.center} 
-                        anchor={{x: 0.5, y: 0.4}}
-                        flat={true}
-                        rotation={angleCar}
-                    >
-                        <Image   
-                            source={require('../../assets/images/icons/bus.png')}
-                            style={{
-                                width: 40,
-                                height: 40,
-                            }}
-                        />
-                    </Marker>
-                }
 
                 {busLoc.center && busChose &&
                     
@@ -475,9 +458,7 @@ const Home = (props) => {
                 
                     
                     {results.length > 0 &&
-                            <Scroll
-                            
-                            >
+                            <Scroll>
                                 {results.map((toLoc)=>{
                                     return(
                                         <Result
