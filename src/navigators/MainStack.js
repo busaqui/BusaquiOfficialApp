@@ -9,6 +9,7 @@ import SignIn from '../screens/TemporarySignIn';
 import SignUp from '../screens/TemporarySignUp';
 import HomeDrawer from './HomeDrawer';
 import LocationBus from '../screens/Home/locationBus.js'
+import Notification from '../screens/Notification/';
 
 //ÁREA DE SEQUÊNCIA DE "CHAMADA" DAS TELAS
 export default createAppContainer(createStackNavigator({
@@ -16,7 +17,8 @@ export default createAppContainer(createStackNavigator({
     SignIn,
     SignUp,
     HomeDrawer,
-    LocationBus
+    LocationBus,
+    Notification
 },{
     initialRouteName:'Preload',
     defaultNavigationOptions:{

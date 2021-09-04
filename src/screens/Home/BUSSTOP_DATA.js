@@ -1,4 +1,4 @@
-// import { ImageBackground } from "react-native";
+// import { Image:ackground } from "react-native";
 
 export const DATA_BUSLIST = [
 
@@ -14,7 +14,9 @@ export const DATA_BUSLIST = [
           latitude: -22.45724,
           // latitude: -22.84258, 
           // longitude: -45.23050, 
-      }
+      },
+      buses:[280],
+      image:'../../../assets/images/BusStops/Ponto1.jpg'
   
   }, 
   
@@ -29,7 +31,9 @@ export const DATA_BUSLIST = [
           longitude: -44.43804, 
           latitude: -22.45587, 
   
-      }
+      },
+      buses:[280],
+      image:'../../../assets/images/BusStops/Ponto1.jpg'
   
   }, 
   
@@ -44,7 +48,9 @@ export const DATA_BUSLIST = [
           longitude: -44.43731, 
           latitude: -22.45607, 
       
-      }
+      },
+      buses:[280],
+      image:'../../../assets/images/BusStops/Ponto1.jpg'
   
   }, 
   
@@ -58,7 +64,9 @@ export const DATA_BUSLIST = [
           longitude: -44.43619, 
           latitude: -22.45749, 
       
-      }
+      },
+      buses:[280],
+      image:'../../../assets/images/BusStops/Ponto1.jpg'
   
   }, 
   
@@ -71,7 +79,9 @@ export const DATA_BUSLIST = [
           longitude: -44.43434, 
           latitude: -22.45611, 
       
-      }
+      },
+      buses:[280],
+      image:'../../../assets/images/BusStops/Ponto1.jpg'
   
   }, 
   
@@ -85,7 +95,9 @@ export const DATA_BUSLIST = [
           longitude: -44.43355, 
           latitude: -22.45480, 
       
-      }
+      },
+      buses:[280],
+      image:'../../../assets/images/BusStops/Ponto1.jpg'
   
   }, 
   
@@ -99,7 +111,9 @@ export const DATA_BUSLIST = [
           longitude: -44.43232, 
           latitude: -22.45279, 
       
-      }
+      },
+      buses:[280],
+      image:'../../../assets/images/BusStops/Ponto1.jpg'
   
   }, 
   
@@ -113,7 +127,9 @@ export const DATA_BUSLIST = [
           longitude: -44.43429, 
           latitude: -22.45275, 
       
-      }
+      },
+      buses:[280],
+      image:'../../../assets/images/BusStops/Ponto1.jpg'
   
   }, 
   
@@ -127,7 +143,9 @@ export const DATA_BUSLIST = [
           longitude: -44.43585, 
           latitude: -22.45164, 
       
-      }
+      },
+      buses:[280],
+      image:'../../../assets/images/BusStops/Ponto1.jpg'
   
   }, 
   
@@ -141,7 +159,9 @@ export const DATA_BUSLIST = [
           longitude: -44.43761, 
           latitude: -22.44964, 
       
-      }
+      },
+      buses:[280],
+      image:'../../../assets/images/BusStops/Ponto1.jpg'
   
   }, 
   
@@ -155,7 +175,9 @@ export const DATA_BUSLIST = [
           longitude: -44.43656, 
           latitude: -22.45237, 
       
-      }
+      },
+      buses:[280],
+      image:'../../../assets/images/BusStops/Ponto1.jpg'
   
   }, 
   
@@ -169,7 +191,9 @@ export const DATA_BUSLIST = [
           longitude: -44.43563, 
           latitude: -22.45459, 
       
-      }
+      },
+      buses:[280],
+      image:'../../../assets/images/BusStops/Ponto1.jpg'
   
   }, 
   
@@ -183,7 +207,9 @@ export const DATA_BUSLIST = [
           longitude: -44.43750, 
           latitude: -22.45489, 
       
-      }
+      },
+      buses:[280],
+      image:'../../../assets/images/BusStops/Ponto1.jpg'
   
   }, 
   
@@ -197,7 +223,9 @@ export const DATA_BUSLIST = [
           longitude: -44.43933, 
           latitude: -22.45238, 
       
-      }
+      },
+      buses:[280],
+      image:'../../../assets/images/BusStops/Ponto1.jpg'
   
   }, 
   
@@ -211,7 +239,9 @@ export const DATA_BUSLIST = [
           longitude: -44.44088, 
           latitude: -22.44997, 
       
-      }
+      },
+      buses:[280],
+      image:'../../../assets/images/BusStops/Ponto1.jpg'
   
   }, 
   
@@ -225,7 +255,9 @@ export const DATA_BUSLIST = [
           longitude: -44.44194, 
           latitude: -22.44863, 
       
-      }
+      },
+      buses:[280],
+      image:'../../../assets/images/BusStops/Ponto1.jpg'
   
   }, 
   
@@ -239,7 +271,9 @@ export const DATA_BUSLIST = [
           longitude: -44.44270, 
           latitude: -22.44867, 
       
-      }
+      },
+      buses:[280],
+      image:'../../../assets/images/BusStops/Ponto1.jpg'
   
   }, 
   
@@ -253,7 +287,9 @@ export const DATA_BUSLIST = [
           longitude: -44.44407, 
           latitude: -22.45204, 
       
-      }
+      },
+      buses:[280],
+      image:'../../../assets/images/BusStops/Ponto1.jpg'
   
   }, 
   
@@ -267,7 +303,9 @@ export const DATA_BUSLIST = [
           longitude: -44.44323, 
           latitude: -22.45328, 
       
-      }
+      },
+      buses:[280],
+      image:'../../../assets/images/BusStops/Ponto1.jpg'
   
   }, 
   
@@ -281,7 +319,9 @@ export const DATA_BUSLIST = [
           longitude: -44.44374, 
           latitude: -22.45505, 
       
-      }
+      },
+      buses:[280],
+      image:'../../../assets/images/BusStops/Ponto1.jpg'
   
   }, 
   
@@ -295,7 +335,9 @@ export const DATA_BUSLIST = [
           longitude: -44.44140, 
           latitude: -22.45487, 
       
-      }
+      },
+      buses:[280],
+      image:'../../../assets/images/BusStops/Ponto1.jpg'
   
   }, 
   
@@ -309,7 +351,9 @@ export const DATA_BUSLIST = [
           longitude: -44.44018, 
           latitude: -22.45506, 
       
-      }
+      },
+      buses:[280],
+      image:'../../../assets/images/BusStops/Ponto1.jpg'
   
   }, 
   
@@ -323,7 +367,9 @@ export const DATA_BUSLIST = [
           longitude: -44.43978, 
           latitude: -22.45684, 
       
-      }
+      },
+      buses:[280],
+      image:'../../../assets/images/BusStops/Ponto1.jpg'
   
   },  
   
@@ -339,7 +385,10 @@ export const DATA_BUSLIST = [
           longitude: -44.44116, 
           latitude: -22.45864, 
           
-     }
+      },
+      buses:[280],
+      image:'https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=2ke3dts8xFa7M9tVvPXBuw&cb_client=search.gws-prod.gps&w=408&h=240&yaw=125.156815&pitch=0&thumbfov=100'
+  
   
    }, 
   
@@ -355,6 +404,8 @@ export const DATA_BUSLIST = [
           latitude: -22.46142, 
       
       },
+      buses:[280],
+      image:'https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=6LMY7aofTF4iuT0MtzlBWw&cb_client=search.gws-prod.gps&w=408&h=240&yaw=232.55827&pitch=0&thumbfov=100'
   
     }, 
   
@@ -366,9 +417,11 @@ export const DATA_BUSLIST = [
     //   address: " Rua Dr. Marcondes Godói, 936 - Paraíso, Resende- RJ, Brasil ", 
       center:{
           longitude: -44.43979, 
-          latitude: -22.46392, 
+          latitude: -22.46392,
       
-      }
+      },
+      buses:[280],
+      image:'https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=UJrieqjJqnByDQ_3B8ty5w&cb_client=search.gws-prod.gps&w=408&h=240&yaw=254.4415&pitch=0&thumbfov=100'
   
     }, 
   
@@ -382,7 +435,9 @@ export const DATA_BUSLIST = [
           longitude: -44.44293, 
           latitude: -22.46401, 
       
-      }
+      },
+      buses:[280],
+      image:'https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=dC8fsrk3DKewR5Q43aKQHQ&cb_client=search.gws-prod.gps&w=408&h=240&yaw=47.322&pitch=0&thumbfov=100'
   
   }, 
   
@@ -396,7 +451,9 @@ export const DATA_BUSLIST = [
           longitude: -44.44672, 
           latitude: -22.46333, 
       
-      }
+      },
+      buses:[280],
+      image:'https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=WnDznWcjO9aq9xOF9FNEeg&cb_client=search.gws-prod.gps&w=408&h=240&yaw=76.221176&pitch=0&thumbfov=100'
   
     }, 
   
@@ -410,8 +467,9 @@ export const DATA_BUSLIST = [
           longitude: -44.44911, 
           latitude: -22.46206, 
       
-      }
-  
+      },
+      buses:[280],
+      image:'https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=eais-AnnF5g5OJEM-PWjig&cb_client=search.gws-prod.gps&w=408&h=240&yaw=356.9989&pitch=0&thumbfov=100'
     }, 
   
   { 
@@ -424,7 +482,9 @@ export const DATA_BUSLIST = [
           longitude: -44.45090, 
           latitude: -22.46365, 
       
-      }
+      },
+      buses:[280],
+      image:'https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=gKbM9uukzb8reM26r2atww&cb_client=search.gws-prod.gps&w=408&h=240&yaw=292.93503&pitch=0&thumbfov=100'
   
   }, 
   
@@ -438,7 +498,9 @@ export const DATA_BUSLIST = [
           longitude: -44.45092, 
           latitude: -22.46808 , 
       
-      }
+      },
+      buses:[280],
+      image:'https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=_M0NPuIlbCmJPSy1oflyjg&cb_client=search.gws-prod.gps&w=408&h=240&yaw=278.69504&pitch=0&thumbfov=100'
   
   }, 
   
@@ -452,7 +514,9 @@ export const DATA_BUSLIST = [
           longitude: -44.44857, 
           latitude: -22.46791, 
       
-      }
+      },
+      buses:[280],
+      image:'https://tribunasf.com.br/wp-content/uploads/2020/10/A08B4FAF-AA63-4E49-83F7-C82A892892B8.jpeg'
   
   }, 
   
@@ -466,7 +530,9 @@ export const DATA_BUSLIST = [
           longitude: -44.45468, 
           latitude: -22.46306, 
       
-      }
+      },
+      buses:[280],
+      image:'../../../assets/images/BusStops/Ponto1.jpg'
   
   }, 
   
@@ -480,7 +546,9 @@ export const DATA_BUSLIST = [
           longitude: -44.45708, 
           latitude: -22.46517, 
       
-      }
+      },
+      buses:[280],
+      image:'../../../assets/images/BusStops/Ponto1.jpg'
   
   }, 
   
@@ -494,7 +562,9 @@ export const DATA_BUSLIST = [
           longitude: -44.45992, 
           latitude: -22.46398, 
       
-      }
+      },
+      buses:[280],
+      image:'../../../assets/images/BusStops/Ponto1.jpg'
   
   }, 
   
@@ -508,7 +578,9 @@ export const DATA_BUSLIST = [
           longitude: -44.46217, 
           latitude: -22.46413, 
       
-      }
+      },
+      buses:[280],
+      image:'../../../assets/images/BusStops/Ponto1.jpg'
   
   }, 
   
@@ -536,7 +608,9 @@ export const DATA_BUSLIST = [
           longitude: -44.46249, 
           latitude: -22.46708, 
       
-      }
+      },
+      buses:[280],
+      image:'../../../assets/images/BusStops/Ponto1.jpg'
   
   }, 
   
@@ -550,7 +624,9 @@ export const DATA_BUSLIST = [
           longitude: -44.46202, 
           latitude: -22.46961, 
       
-      }
+      },
+      buses:[280],
+      image:'../../../assets/images/BusStops/Ponto1.jpg'
   
   }, 
   
@@ -564,7 +640,9 @@ export const DATA_BUSLIST = [
           longitude: -44.46248, 
           latitude: -22.47039, 
       
-      }
+      },
+      buses:[280],
+      image:'../../../assets/images/BusStops/Ponto1.jpg'
   
   }, 
   
@@ -578,7 +656,9 @@ export const DATA_BUSLIST = [
           longitude: -44.46687, 
           latitude: -22.47115, 
       
-      }
+      },
+      buses:[280],
+      image:'../../../assets/images/BusStops/Ponto1.jpg'
   
   }, 
   
@@ -592,7 +672,9 @@ export const DATA_BUSLIST = [
           longitude: -44.46988, 
           latitude: -22.47267, 
       
-      }
+      },
+      buses:[280],
+      image:'../../../assets/images/BusStops/Ponto1.jpg'
   
   }, 
   
@@ -607,6 +689,8 @@ export const DATA_BUSLIST = [
        latitude: -22.47195, 
       
       },
+      buses:[280],
+      image:'../../../assets/images/BusStops/Ponto1.jpg'
   
   }, 
   
@@ -621,6 +705,8 @@ export const DATA_BUSLIST = [
           latitude: -22.47238, 
       
       },
+      buses:[280],
+      image:'../../../assets/images/BusStops/Ponto1.jpg'
   
   }, 
   
@@ -634,7 +720,9 @@ export const DATA_BUSLIST = [
           longitude: -44.47908, 
           latitude: -22.47424, 
       
-      }
+      },
+      buses:[280],
+      image:'../../../assets/images/BusStops/Ponto1.jpg'
   
   }, 
   
@@ -648,7 +736,9 @@ export const DATA_BUSLIST = [
           longitude: -44.49979, 
           latitude: -22.47841, 
       
-      }
+      },
+      buses:[280],
+      image:'../../../assets/images/BusStops/Ponto1.jpg'
   
   }, 
   
@@ -662,7 +752,9 @@ export const DATA_BUSLIST = [
           longitude: -44.49595, 
           latitude: -22.4774, 
       
-      }
+      },
+      buses:[280],
+      image:'../../../assets/images/BusStops/Ponto1.jpg'
   
   }, 
   
@@ -676,7 +768,9 @@ export const DATA_BUSLIST = [
           longitude: -44.49259, 
           latitude: -22.47920, 
       
-      }
+      },
+      buses:[280],
+      image:'../../../assets/images/BusStops/Ponto1.jpg'
   
   }, 
   
@@ -690,7 +784,9 @@ export const DATA_BUSLIST = [
           longitude: -44.49264, 
           latitude: -22.48078, 
       
-      }
+      },
+      buses:[280],
+      image:'../../../assets/images/BusStops/Ponto1.jpg'
   
   }, 
   
@@ -704,7 +800,9 @@ export const DATA_BUSLIST = [
           longitude: -44.49277, 
           latitude: -22.48314, 
       
-      }
+      },
+      buses:[280],
+      image:'../../../assets/images/BusStops/Ponto1.jpg'
   
   }, 
   
@@ -718,7 +816,9 @@ export const DATA_BUSLIST = [
           longitude: -44.49070, 
           latitude: -22.48428, 
       
-      }
+      },
+      buses:[280],
+      image:'../../../assets/images/BusStops/Ponto1.jpg'
   
   }, //FIM DA ROTA DE IDA 
   
@@ -726,16 +826,15 @@ export const DATA_BUSLIST = [
   
       ID: 151,
       //"photo": "ponto 29", 
-      
-      image:require('../../assets/images/icons/Erro.png')
-      ,
   
     //   address: "Estrada Resende Riachuelo, 848, Mirante das Agulhas, Resende-RJ, Brasil", 
       center:{
           longitude: -44.48821, 
           latitude: -22.48504, 
       
-      }
+      },
+      buses:[280],
+      image:'../../../assets/images/BusStops/Ponto1.jpg'
   
   }, 
   
@@ -749,7 +848,9 @@ export const DATA_BUSLIST = [
           longitude: -44.48180, 
           latitude: -22.48384, 
       
-      }
+      },
+      buses:[280],
+      image:'../../../assets/images/BusStops/Ponto1.jpg'
   
   }, 
   
@@ -763,7 +864,9 @@ export const DATA_BUSLIST = [
           longitude: -44.47585, 
           latitude: -22.48339, 
       
-      }
+      },
+      buses:[280],
+      image:'../../../assets/images/BusStops/Ponto1.jpg'
   
   }, 
   
@@ -777,7 +880,9 @@ export const DATA_BUSLIST = [
           longitude: -44.47358, 
           latitude: -22.48528, 
       
-      }
+      },
+      buses:[280],
+      image:'../../../assets/images/BusStops/Ponto1.jpg'
   
   }, 
   
@@ -791,7 +896,9 @@ export const DATA_BUSLIST = [
           longitude: -44.47078, 
           latitude: -22.47914, 
       
-      }
+      },
+      buses:[280],
+      image:'../../../assets/images/BusStops/Ponto1.jpg'
   
   }, 
   
@@ -805,7 +912,9 @@ export const DATA_BUSLIST = [
           longitude: -44.46600, 
           latitude: -22.47576, 
       
-      }
+      },
+      buses:[280],
+      image:'../../../assets/images/BusStops/Ponto1.jpg'
   
   }, 
   
@@ -819,7 +928,9 @@ export const DATA_BUSLIST = [
           longitude: -44.46624, 
           latitude: -22.47415, 
       
-      }
+      },
+      buses:[280],
+      image:'../../../assets/images/BusStops/Ponto1.jpg'
   
   }, 
   
@@ -833,7 +944,9 @@ export const DATA_BUSLIST = [
           longitude: -44.46466, 
           latitude: -22.47231, 
       
-      }
+      },
+      buses:[280],
+      image:'../../../assets/images/BusStops/Ponto1.jpg'
   
   }, 
   
@@ -847,7 +960,9 @@ export const DATA_BUSLIST = [
           longitude: -44.45972, 
           latitude: -22.47121, 
       
-      }
+      },
+      buses:[280],
+      image:'../../../assets/images/BusStops/Ponto1.jpg'
   
   }, 
   
@@ -861,7 +976,9 @@ export const DATA_BUSLIST = [
           longitude: -44.45785, 
           latitude: -22.47051, 
       
-      }
+      },
+      buses:[280],
+      image:'../../../assets/images/BusStops/Ponto1.jpg'
   
   }, 
   
@@ -875,7 +992,9 @@ export const DATA_BUSLIST = [
           longitude: -44.45650, 
           latitude: -22.46903, 
       
-      }
+      },
+      buses:[280],
+      image:'../../../assets/images/BusStops/Ponto1.jpg'
   
   }, 
   
@@ -889,7 +1008,9 @@ export const DATA_BUSLIST = [
           longitude: -44.45322, 
           latitude: -22.46963, 
       
-      }
+      },
+      buses:[280],
+      image:'../../../assets/images/BusStops/Ponto1.jpg'
   
   }, 
   
@@ -903,7 +1024,9 @@ export const DATA_BUSLIST = [
           longitude: -44.45023, 
           latitude: -22.46913, 
       
-      }
+      },
+      buses:[280],
+      image:'../../../assets/images/BusStops/Ponto1.jpg'
   
   }, 
   
@@ -919,7 +1042,9 @@ export const DATA_BUSLIST = [
           longitude: -44.44676, 
           latitude: -22.46619, 
       
-      }
+      },
+      buses:[280],
+      image:'https://lh5.googleusercontent.com/p/AF1QipNBnkAXDg27qTnUUDqbeiMUFjC59v_IVTBSMM5Q=w1080-k-no'
   
   }, 
   
@@ -933,7 +1058,9 @@ export const DATA_BUSLIST = [
           longitude: -44.44730, 
           latitude: -22.46341, 
       
-      }
+      },
+      buses:[280],
+      image:'https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=us0FRGQN3JWM74D-rlTGMw&cb_client=search.gws-prod.gps&w=408&h=240&yaw=196.04471&pitch=0&thumbfov=100'
   
     }, 
   
@@ -947,7 +1074,9 @@ export const DATA_BUSLIST = [
           longitude: -44.44279, 
           latitude: -22.46430, 
       
-      }
+      },
+      buses:[280],
+      image:'https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=dC8fsrk3DKewR5Q43aKQHQ&cb_client=search.gws-prod.gps&w=408&h=240&yaw=47.322&pitch=0&thumbfov=100'
   
     }, 
   
@@ -961,8 +1090,9 @@ export const DATA_BUSLIST = [
           longitude: -44.43959, 
           latitude: -22.46409, 
       
-      }
-  
+      },
+      buses:[280],
+      image:'https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=Omz2W6Syp2WveT7M4cfvxg&cb_client=search.gws-prod.gps&w=408&h=240&yaw=120.550865&pitch=0&thumbfov=100'
     },
     { 
   
@@ -974,7 +1104,9 @@ export const DATA_BUSLIST = [
           longitude: -44.43975,
           latitude: -22.46115, 
       
-      }
+      },
+      buses:[280],
+      image:'https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=7vdCwINuJXs68BtZtS2k3w&cb_client=search.gws-prod.gps&w=408&h=240&yaw=7.5191054&pitch=0&thumbfov=100'
   
   }
   

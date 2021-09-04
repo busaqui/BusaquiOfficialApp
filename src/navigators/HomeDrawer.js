@@ -1,14 +1,15 @@
 import { createDrawerNavigator } from 'react-navigation-drawer';
 
-import Home from '../screens/Home/index.js';
-import LocationBus from '../screens/Home/locationBus.js'
+import Home from '../screens/Home/';
+import Notification from '../screens/Notification/';
 
 export default createDrawerNavigator({
-    Home,
-    LocationBus
+    Notification,
+    Home
 },{
     initialRouteName:'Home',
     defaultNavigationOptions:{
-        headerShown: false
+        headerShown: false,
+        drawerLockMode: true
     }
 });

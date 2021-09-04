@@ -59,17 +59,17 @@ const Notifications = (props) => {
         }
     }
 
-    renderItems = ({ item }) => {
+    const renderItems = ({ item }) => {
         return(
             <NotificationCard
-            NotificationLogo={require('../../assets/Images/Default_Image.png')}
+            NotificationLogo={require('../../assets/images/Default_Image.png')}
             NotificationText= {item.text}    
             NotificationTime= {moment(item.addedTime).startOf('hour').fromNow()}
             />
         )
     }
 
-    renderHeader = ({ section }) => {
+    const renderHeader = ({ section }) => {
         return (
             <NotificationDate
             NotificationTitle={HandleDate(section.title)}
@@ -77,12 +77,23 @@ const Notifications = (props) => {
         )
     }
 
+    const handleBack = () => {
+        props.navigation.dispatch(StackActions.reset({
+            index:0,
+            actions:[
+                NavigationActions.navigate({routeName:'HomeDrawer'})
+            ]
+        }));
+    }
+
     return(
         <Container>
             <StatusBar backgroundColor={color.Branco} barStyle='dark-content'/>
             <Header>
-                <ArrowButton>
-                    <ArrowButtonImage source={require('../../assets/Images/Icons/Arrow.png')}/>
+                <ArrowButton
+                    onPress={handleBack}
+                >
+                    <ArrowButtonImage source={require('../../assets/images/icons/arrow.png')}/>
                     {/*TRANSFORMAR EM SVG*/}
                 </ArrowButton>
 

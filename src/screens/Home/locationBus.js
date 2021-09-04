@@ -13,22 +13,31 @@ const Locations = (props) => {
 
     const map = useRef();
 
-    const [maploc, setMapLoc] = useState({
+    // const [maploc, setMapLoc] = useState({
+    //     center:{
+    //         latitude:57.78825,
+    //         longitude:-122.4322,
+    //     },
+    //     zoom:18,
+    //     pitch:0,
+    //     altitude:0,
+    //     heading:0
+    // });
+
+    const [busLoc, setBusLoc] = useState({
         center:{
-            latitude:57.78825,
-            longitude:-122.4322,
+            latitude:-22.4611,
+            longitude:-44.4403,
         },
         zoom:18,
         pitch:0,
         altitude:0,
         heading:0
     });
-
-    const [busLoc, setBusLoc] = useState({});
     const [result,setResult] = useState([]);
 
 
-    const socket = io('http://10.0.2.2:4000', {
+    const socket = io('http://192.168.18.2:4000', {
         // jsonp: false,
         transports: ['websocket'],
     });
@@ -43,7 +52,7 @@ const Locations = (props) => {
     useEffect(()=>{
         Geocoder.init(MapsAPI, {language:'pt-br'});
         getMyPositionBus();
-    });
+    },[]);
 
     useEffect(()=>{
         // console.log('1');
@@ -67,11 +76,9 @@ const Locations = (props) => {
                     pitch:0,
                     altitude:0,
                     heading:0
-            };
-            setMapLoc(loc);
-            setBusLoc(loc);
-
-            
+                };
+                // setMapLoc(loc);
+                setBusLoc(loc);
             }
             // console.log(geo.results[0]);  
 
@@ -100,7 +107,7 @@ const Locations = (props) => {
             ref={map}
             style={{flex:1}}
             provider={'google'}
-            camera={maploc}
+            camera={busLoc}
             >
 
                {busLoc.center && 

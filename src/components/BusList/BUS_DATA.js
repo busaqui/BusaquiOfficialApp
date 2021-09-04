@@ -2,8 +2,8 @@ export const DATA_BUSLIST = [
     {
         "id": 1,
         "busID": 280,
-        "routeName": "O 280 está chegando",
-        "time": Date.now() + 1000000
+        "routeName": "Paraíso X Cidade Alegria",
+        // "time": Date.now() + 1000000
     },
     {
         "id": 2,

@@ -18,19 +18,26 @@ import {
     Scroll,
     ViewButton
     } from './styled';
-import SearchBox from '../../components/Home/SearchBox';
-import {HomeDrawer} from '../../navigators/HomeDrawer';
 import { baseProps } from 'react-native-gesture-handler/lib/typescript/handlers/gestureHandlers';
 import { DrawerActions } from 'react-navigation-drawer';
-
-import { DATA_BUSLIST } from './BUSSTOP_DATA';
-import BusStopIcon from '../../assets/images/icons/busStop.png';
-import { ModalBusStopInfo } from '../../components/Home/ModalBusStopInfo/index.js';
-import { ReactButton } from 'react-native-gesture-handler';
 import { StackActions, NavigationActions } from 'react-navigation';
 import io from 'socket.io-client/dist/socket.io';
 
+import SearchBox from '../../components/Home/SearchBox';
+import {HomeDrawer} from '../../navigators/HomeDrawer';
+import BusStopIcon from '../../assets/images/icons/busStop.png';
+import BusStopIconBlue from '../../assets/images/icons/busStopBlue.png';
+import { ModalBusStopInfo } from '../../components/Home/ModalBusStopInfo/index.js';
+import { ReactButton } from 'react-native-gesture-handler';
+import { DATA_BUSLIST } from './BUSSTOP_DATA';
+import BusList from '../../components/BusList';
+import { ModalBusTime } from '../../components/Home/ModalBusTime';
 
+
+const socket = io('http://192.168.18.2:4000', {
+    // jsonp: false,'10.0.2.2'
+    transports: ['websocket'],
+});
 
 // socket.on('connect', () => {
     //     console.log('socketId: '+ socket.id);
@@ -42,17 +49,26 @@ const Home = (props) => {
     let timer = (0);
     const map = useRef();
 
-    const [maploc, setMapLoc] = useState({
+    // const [maploc, setMapLoc] = useState({
+    //     center:{
+    //         latitude:57.78825,
+    //         longitude:-122.4322,
+    //     },
+    //     zoom:18,
+    //     pitch:0,
+    //     altitude:0,
+    //     heading:0
+    // });
+    const [fromLoc, setFromLoc] = useState({
         center:{
-            latitude:57.78825,
-            longitude:-122.4322,
+            latitude:-22.456124,
+            longitude:-44.441584,
         },
-        zoom:18,
+        zoom:16,
         pitch:0,
         altitude:0,
         heading:0
     });
-    const [fromLoc, setFromLoc] = useState({});
     const [toLoc, setToLoc] = useState({});
     const [showDirections, setShowDirections] = useState(false);
     const [requestDistance, setRequestDistance] = useState(0);
@@ -63,30 +79,37 @@ const Home = (props) => {
     const [angleCar, setAngleCar] = useState(0);
     const [busLoc, setBusLoc] = useState({});
 
+    const [busStopID, setBusStopID] = useState(0);
     const [busStopAddress,setBusStopAddress] = useState('');
     const [busStopImage,setBusStopImage] = useState('');
     const [busStopTime,setBusStopTime] = useState(0);
     const [showBusStopDirection, setShowBusStopDirection] = useState(false);
     const [busStopVisible, setBusStopVisible] = useState(false);
     const [directionsBus, setDirectionsBus] = useState(false);
+    const [busStopBuses, setBusStopBuses] = useState([]);
+    const [busListVisible, setBusListVisible] = useState(false);
     const [toBusStop,setToBusStop] = useState({
         center:{
             latitude:57.78825,
             longitude:-122.4322
         },
-        zoom:18,
+        zoom:25,
         pitch:0,
         altitude:0,
         heading:0
     });
+
+    const [busTime, setBusTime] = useState(0);
+    const [modalTimeVisible, setModalTimeVisible] = useState(false);
+    const [routeName, setRouteName] = useState('');
+    const [routeID, setRouteID] = useState(0);
+    const [formattedTime, setFormattedTime] = useState('');
+    const [busChose, setBusChose] = useState(false);
+    const [busInfoTime, setBusInfoTime] = useState('');
+    const [busDistance, setBusDistance] = useState(0);
     
     const [searchText, setSearchText] = useState('');
     const [results, setResults ] = useState([]);
-    
-    const socket = io('http://192.168.29.69:4000', {
-        // jsonp: false,'10.0.2.2'
-        transports: ['websocket'],
-    });
     
     // socket.on('connect', () => {
     //     console.log('connected!');
@@ -94,6 +117,7 @@ const Home = (props) => {
 
     socket.on('busLocReenvite', (busLocReceived) => {
         setBusLoc(busLocReceived);
+        // console.log(busLoc)
     });
     
 
@@ -203,7 +227,7 @@ const Home = (props) => {
                     altitude:0,
                     heading:0
                 };
-                setMapLoc(loc);
+                // setMapLoc(loc);
                 setFromLoc(loc);
 
                 // console.log(setMapLoc);
@@ -221,27 +245,28 @@ const Home = (props) => {
 
     const handleDirectionsReady = (r) => {
         // console.log("FUNCIONALIDADES: ", r.coordinates); 
-        setRequestDistance( r.distance );
-        setRequestTime( r.time );
-        setTimeDuration( r.duration );
+        // setRequestDistance( r.distance );
+        // setRequestTime( r.time );
+        // setTimeDuration( r.duration );
 
-        if(!isReady){
-            map.current.fitToCoordinates(r.coordinates, {
-                edgePadding:{
-                    left:50,
-                    right:50,
-                    bottom:50,
-                    top:100
-                }
-        });
-          setIsReady(true)
-        }
+        // if(!isReady){
+        //     map.current.fitToCoordinates(r.coordinates, {
+        //         edgePadding:{
+        //             left:50,
+        //             right:50,
+        //             bottom:50,
+        //             top:100
+        //         }
+        // });
+        //   setIsReady(true)
+        // }
 
         // console.log("Resultado: ", r);
 
         if(r.coordinates.length >= 2) {
           let angle = calculateAngle(r.coordinates)
           setAngleCar(angle)
+        //   console.log('angle' + angle)
         }
       }
 
@@ -266,7 +291,7 @@ const Home = (props) => {
 
     const handleBusStop = (busStopInfo) => {
 
-        // setBusStopAddress(busStopInfo.address);
+        setBusStopID(busStopInfo.ID)
         
         setToBusStop({
             center: {
@@ -278,6 +303,10 @@ const Home = (props) => {
             altitude: 0,
             heading: 0
         });
+
+        setBusStopImage(busStopInfo.image);
+
+        setBusStopBuses(busStopInfo.buses);
 
         setBusStopVisible(true);
     }
@@ -294,7 +323,7 @@ const Home = (props) => {
                 ref={map}
                 style={{flex:1}}
                 provider="google"
-                camera={maploc}
+                camera={fromLoc}
             >
                 {fromLoc.center && !toLoc.center &&
                     <MapView.Marker 
@@ -322,9 +351,9 @@ const Home = (props) => {
                     </Marker>
                 }
 
-                {busLoc.center &&
+                {busLoc.center && busChose &&
                     
-                    <Marker 
+                    <Marker
                         coordinate={busLoc.center} 
                         anchor={{x: 0.5, y: 0.4}}
                         flat={true}
@@ -340,7 +369,7 @@ const Home = (props) => {
                     </Marker>
                 }
 
-                {showDirections && 
+                {showDirections && fromLoc.zoom != 25 && 
                     <MapViewDirections 
                         origin={fromLoc.center}
                         destination={toLoc.center}
@@ -351,7 +380,7 @@ const Home = (props) => {
                     />
                 }
 
-                {showBusStopDirection && 
+                {showBusStopDirection && fromLoc.zoom != 25 &&
                     <MapViewDirections 
                         apikey={MapsAPI}
                         origin={fromLoc.center}
@@ -366,13 +395,40 @@ const Home = (props) => {
                     />
                 }
 
-                {directionsBus && 
+                {directionsBus && toBusStop.zoom != 25 &&
                     <MapViewDirections 
                         apikey={MapsAPI}
                         origin={busLoc.center}
                         destination={toBusStop.center}
-                        strokeColor='transparent'
-                        mode="DRIVER"
+                        strokeColor={busChose ? color.Azul : 'transparent'}
+                        strokeWidth={4}
+                        mode="DRIVING"
+                        onReady={(r) => {
+                            setBusTime(r.duration)
+                            console.log("d"+r.duration)
+                            // setBusDistance(r.distance * 1000)
+
+                            handleDirectionsReady(r);
+                        }}
+                        // onReady={handleDirectionsReady}
+                    />
+                    
+                }
+
+                {directionsBus && toBusStop.zoom != 25 &&
+                    <MapViewDirections 
+                        apikey={MapsAPI}
+                        origin={busLoc.center}
+                        destination={toBusStop.center}
+                        strokeColor={'transparent'}
+                        // strokeWidth={4}
+                        mode="WALKING"
+                        onReady={(r) => {
+                            setBusDistance(r.distance * 1000)
+
+                            // handleDirectionsReady(r);
+                        }}
+                        // onReady={handleDirectionsReady}
                     />
                     
                 }
@@ -380,20 +436,20 @@ const Home = (props) => {
                 {
                     DATA_BUSLIST.map((busStop) => (
 
-                            <Marker
+                        <Marker
                             coordinate={busStop.center} 
                             anchor={{x: 0.4, y: 0.3}}
                             flat={true}
                             key={"" + busStop.ID}
                             identifier={"" + busStop.ID}
                             onPress={() => handleBusStop(busStop)}
-                            image={BusStopIcon}
+                            image={busStop.ID == busStopID ? BusStopIconBlue : BusStopIcon}
                             // style={{height: 50, width: 50}}
                             // stopPropagation={true}
-                            />
+                        />
                             
-                            ))
-                        }
+                    ))
+                }
 
 
 
@@ -444,14 +500,45 @@ const Home = (props) => {
             {busStopVisible &&
             
                 <ModalBusStopInfo
-                address={busStopAddress}
-                time={busStopTime}
-                visible={busStopVisible}
-                visibleAction={setBusStopVisible}
+                    address={busStopAddress}
+                    time={busStopTime}
+                    visible={busStopVisible}
+                    visibleAction={setBusStopVisible}
+                    busListVisible={setBusListVisible}
+                    busStopID={setBusStopID}
+                    image={busStopImage}
                 />
-            
             }
-            
+
+            {busListVisible &&
+                <BusList
+                    busStop={busStopBuses}
+                    busTime={busTime}
+                    busListVisible={setBusListVisible}
+                    modalTimeVisible={setModalTimeVisible}
+                    routeIDAction={setRouteID}
+                    routeNameAction={setRouteName}
+                    formattedTime={setFormattedTime}
+                    busStopID={setBusStopID}
+                    busChose={setBusChose}
+                    busInfoTime={setBusInfoTime}
+                />
+            } 
+
+            {modalTimeVisible &&
+                <ModalBusTime
+                    visible={modalTimeVisible}
+                    visibleAction={setModalTimeVisible}
+                    routeID={routeID}
+                    routeName={routeName}
+                    time={formattedTime}
+                    busStopID={setBusStopID}
+                    busChose={setBusChose}
+                    busInfoTime={busInfoTime}
+                    busDistance={busDistance}
+                />    
+            }
+       
         </Container>
     );
 }

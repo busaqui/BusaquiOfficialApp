@@ -41,13 +41,13 @@ export const Content = styled.View`
     padding-bottom: 23px;
 `;
 
-export const BusStopImage = styled.View`
+export const BusStopImage = styled.Image`
     width: 85%;
     height: 48%;
     border-radius: 8px;
     /* margin-top: 29px; */
     align-self: center;
-    background-image: ${DATA_BUSLIST.push.image};
+    /* background-image: ${DATA_BUSLIST.push.image}; */
 `;
 
 export const HeaderLine = styled.View`

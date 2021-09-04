@@ -1,11 +1,10 @@
 import React, {useState, useEffect} from 'react';
-import { View, Text, TouchableHighlight, TouchableOpacity,  } from 'react-native';
+import { View, Text, TouchableHighlight, TouchableOpacity, Image } from 'react-native';
 import { Modal } from 'react-native';
 import Geocoder from 'react-native-geocoding';
 import { MapsAPI } from '../../../services/config';
-import color from '../../../assets/color';
 
-// import { Container } from './styled';
+import color from '../../../assets/color';
 import { Container,
          TouchableCloseVertical,
          ViewCloseMiddle,
@@ -33,6 +32,10 @@ export const ModalBusStopInfo = (props) => {
     let address = props.address;
     let time = props.time;
     let visible = props.visible;
+    // let busListVisible = props.busListVisible;
+    let image = props.image;
+
+    console.log(image);
 
     const [minutos, setMinutos] = useState(0);
     const [horas, setHoras] = useState(0);
@@ -68,6 +71,12 @@ export const ModalBusStopInfo = (props) => {
 
     const handleCloseModal = () => {   
         props.visibleAction(false);
+        props.busStopID(0);
+    }
+
+    const handleBusStop = () => {
+        props.busListVisible(true);
+        props.visibleAction(false);
     }
 
     return (
@@ -86,7 +95,9 @@ export const ModalBusStopInfo = (props) => {
                         onPress={handleCloseModal}
                     />
                     <Content>
-                        <BusStopImage></BusStopImage>
+                        <BusStopImage
+                            source={{uri: image}}
+                        />
                         <HeaderLine>
                             <Title>
                                 Ponto de embarque
@@ -103,7 +114,9 @@ export const ModalBusStopInfo = (props) => {
                             {address}
                         </AddressText>
                         <Footer>
-                            <ButtonBusLine>
+                            <ButtonBusLine
+                                onPress={handleBusStop}
+                            >
                                 <BusText>Ver linhas</BusText>
                             </ButtonBusLine>
                             <PearsonIcon source={require('../../../assets/images/icons/walkingPerson.png')}></PearsonIcon>

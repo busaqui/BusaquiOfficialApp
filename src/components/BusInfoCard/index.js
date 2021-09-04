@@ -1,3 +1,4 @@
+import moment from 'moment';
 import React, {useState, useCallback} from 'react'
 import { TouchableHighlight } from 'react-native'
 import color from '../../assets/color';
@@ -8,9 +9,16 @@ import {Container,TextContainer,LogoRoute,RouteTitle,InfoContainer,
 //CARTÃO CONTENDO AS INFORMAÇÕES DE UMA LINHA
 
 export const BusInfoCard = (props) => {
-    let BusID = props.BusID
-    let RouteName = props.RouteName
-    let Time = props.Time
+    let BusID = props.BusID;
+    let RouteName = props.RouteName;
+    let Time = props.Time;
+
+    let FormattedTime = Time > 1 ? ` ${Time}` : ` 1`;
+    let PreviewedTime = parseInt(Time * 60 * 1000) + Date.now();
+    let InfoTime = `${FormattedTime} min - ${moment(PreviewedTime).format('LT')}`
+
+    console.log("Now: " + Date.now());
+    console.log("Time: "+ InfoTime);
 
     const [IsPressed, setIsPressed] = useState(false);
 
@@ -22,11 +30,21 @@ export const BusInfoCard = (props) => {
         setIsPressed(false);
     }, []);
 
+    const handleClicked = () => {
+        props.modalVisible(true);
+        props.busListVisible(false);
+        props.routeID(BusID);
+        props.routeName(RouteName);
+        props.busChose(true);
+        props.busInfoTime(InfoTime);
+    }
+
     return(
         <TouchableHighlight
         onPressIn={handlePressed}
         onPressOut={handleUnpressed}
         activeOpacity={100}
+        onPress={handleClicked}
         >
         <Container 
         style={IsPressed ?  
@@ -35,8 +53,8 @@ export const BusInfoCard = (props) => {
 
             <LogoContainer>
                 <LogoRoute
-                source={IsPressed ? require('../../assets/Images/Icons/WhiteBusNumber.png')
-                        : require('../../assets/Images/Icons/BlackBusNumber.png')}
+                source={IsPressed ? require('../../assets/images/icons/whiteBusNumber.png')
+                        : require('../../assets/images/icons/blackBusNumber.png')}
                 />
 
                 <BusNumber 
@@ -72,7 +90,7 @@ export const BusInfoCard = (props) => {
                     {color: color.Branco} : 
                     {color: color.PretoBusaqui}}>
 
-                        {` ${Time}`}
+                        {InfoTime}
                     </DurationInfo>
                 </InfoContainer>
             </TextContainer>

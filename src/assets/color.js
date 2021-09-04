@@ -1,4 +1,5 @@
 export default{
+    AzulClaro: 'rgba(11, 99, 206, 0.2)',
     Azul: '#074DB6',
     AzulEscuro: '#001647',
     Branco: '#FFF',
