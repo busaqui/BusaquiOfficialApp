@@ -26,7 +26,7 @@ export const DATA_BUSLIST = [
 
       //"photo": "ponto -21",//68 
   
-    //   address: "Rua Dr. Geraldo Pereira, 165, Paraíso, Resende- RJ, Brasil", 
+    //   address: "Rua Dr. Geraldo Pereira, 165, Paraíso, Resende- RJ, Brasil",
       center:{
           longitude: -44.43804, 
           latitude: -22.45587, 
@@ -439,8 +439,8 @@ export const DATA_BUSLIST = [
       buses:[280],
       image:'https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=dC8fsrk3DKewR5Q43aKQHQ&cb_client=search.gws-prod.gps&w=408&h=240&yaw=47.322&pitch=0&thumbfov=100'
   
-  }, 
-  
+  },
+
   { 
   
       ID: 127,
@@ -455,7 +455,7 @@ export const DATA_BUSLIST = [
       buses:[280],
       image:'https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=WnDznWcjO9aq9xOF9FNEeg&cb_client=search.gws-prod.gps&w=408&h=240&yaw=76.221176&pitch=0&thumbfov=100'
   
-    }, 
+    },
   
     { 
   

@@ -58,7 +58,7 @@ const BusList = (props) => {
                     showsVerticalScrollIndicator={false}
                 /> */}
 
-                {/* {busTime != 0 &&
+                {busTime != 0 &&
                     <BusInfoCard
                     BusID={busStop[0]}
                     RouteName={"Paraíso X Cd. Alegria"}
@@ -70,9 +70,9 @@ const BusList = (props) => {
                     busChose={props.busChose}
                     busInfoTime={props.busInfoTime}
                     />
-                } */}
+                }
 
-                <BusInfoCard
+                {/* <BusInfoCard
                     BusID={busStop[0]}
                     RouteName={"Paraíso X Cd. Alegria"}
                     Time={busTime.toFixed(0)}
@@ -81,7 +81,7 @@ const BusList = (props) => {
                     routeID={props.routeIDAction}
                     routeName={props.routeNameAction}
                     busChose={props.busChose}
-                />
+                /> */}
                 
 
             </ListContainer>

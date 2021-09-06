@@ -69,6 +69,7 @@ const Home = (props) => {
         altitude:0,
         heading:0
     });
+    const [lastFromLoc, setLastFromLoc] = useState({});
     const [toLoc, setToLoc] = useState({});
     const [showDirections, setShowDirections] = useState(false);
     const [requestDistance, setRequestDistance] = useState(0);
@@ -77,6 +78,7 @@ const Home = (props) => {
     const [timeDuration, setTimeDuration] = useState(0);
     const [isReady, setIsReady] = useState(false);
     const [angleCar, setAngleCar] = useState(0);
+    const [angleUser, setAngleUser] = useState(0);
     const [busLoc, setBusLoc] = useState({});
 
     const [busStopID, setBusStopID] = useState(0);
@@ -228,6 +230,7 @@ const Home = (props) => {
                     heading:0
                 };
                 // setMapLoc(loc);
+                setLastFromLoc(fromLoc);
                 setFromLoc(loc);
 
                 // console.log(setMapLoc);
@@ -269,6 +272,14 @@ const Home = (props) => {
         //   console.log('angle' + angle)
         }
       }
+
+    const handleUserDirectionsReady = (r) => {
+        if(r.coordinates.length >= 2) {
+            let angle = calculateAngle(r.coordinates)
+            setAngleUser(angle)
+        //   console.log('angle' + angle)
+        }
+    }
 
     const searchBoxClick = (toLoc)=>{
        
@@ -327,10 +338,19 @@ const Home = (props) => {
             >
                 {fromLoc.center && !toLoc.center &&
                     <MapView.Marker 
-                    pinColor='black' 
                     coordinate={fromLoc.center}
-
-                    />
+                    anchor={{x: 0.5, y: 0.4}}
+                    flat={true}
+                    rotation={angleUser}
+                    >
+                        <Image   
+                            source={require('../../assets/images/icons/userIcon.png')}
+                            style={{
+                                width: 40,
+                                height: 40,
+                            }}
+                        />
+                    </MapView.Marker>
                 }
                 
 
@@ -414,6 +434,19 @@ const Home = (props) => {
                         // onReady={handleDirectionsReady}
                     />
                     
+                }
+
+                {fromLoc.center && lastFromLoc.center &&
+                    <MapViewDirections 
+                    apikey={MapsAPI}
+                    origin={lastFromLoc.center}
+                    destination={fromLoc.center}
+                    strokeColor={'transparent'}
+                    // strokeWidth={4}
+                    mode="WALKING"
+                    onReady={(r) => handleUserDirectionsReady(r)}
+                    // onReady={handleDirectionsReady}
+                    />
                 }
 
                 {

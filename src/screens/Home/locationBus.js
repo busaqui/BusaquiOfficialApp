@@ -57,7 +57,13 @@ const Locations = (props) => {
     useEffect(()=>{
         // console.log('1');
         socket.emit('busLocInvite',busLoc);
+        
     },[busLoc]);
+
+    // while(1 > 0){
+    //     socket.emit('busLocInvite',busLoc);
+    //     setTimeout(function(){}, 500);
+    // }
 
     const getMyPositionBus = (props) => {
         Geolocation.watchPosition(async (info)=>{
