@@ -35,8 +35,6 @@ export const ModalBusStopInfo = (props) => {
     // let busListVisible = props.busListVisible;
     let image = props.image;
 
-    console.log(image);
-
     const [minutos, setMinutos] = useState(0);
     const [horas, setHoras] = useState(0);
     const [improvedTime, setImprovedTime] = useState("");

@@ -17,8 +17,8 @@ export const BusInfoCard = (props) => {
     let PreviewedTime = parseInt(Time * 60 * 1000) + Date.now();
     let InfoTime = `${FormattedTime} min - ${moment(PreviewedTime).format('LT')}`
 
-    console.log("Now: " + Date.now());
-    console.log("Time: "+ InfoTime);
+    // console.log("Now: " + Date.now());
+    // console.log("Time: "+ InfoTime);
 
     const [IsPressed, setIsPressed] = useState(false);
 

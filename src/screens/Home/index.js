@@ -59,6 +59,29 @@ const Home = (props) => {
     //     altitude:0,
     //     heading:0
     // });
+    const [initialLoc, setInitialLoc] = useState({
+        center:{
+            latitude:-22.455098333333332,
+            longitude:-44.43896500000001,
+        },
+        zoom:16,
+        pitch:0,
+        altitude:0,
+        heading:0
+    })
+    const [initialDistance,setInitialDistance] = useState(0);
+
+    const [finalLoc, setFinalLoc] = useState({
+        center:{
+            latitude:-22.4651616667,
+            longitude:-44.4511033333,
+        },
+        zoom:16,
+        pitch:0,
+        altitude:0,
+        heading:0
+    })
+
     const [fromLoc, setFromLoc] = useState({
         center:{
             latitude:-22.456124,
@@ -109,6 +132,7 @@ const Home = (props) => {
     const [busChose, setBusChose] = useState(false);
     const [busInfoTime, setBusInfoTime] = useState('');
     const [busDistance, setBusDistance] = useState(0);
+    const [onBus,setOnBus] = useState(false);
     
     const [searchText, setSearchText] = useState('');
     const [results, setResults ] = useState([]);
@@ -213,7 +237,6 @@ const Home = (props) => {
     }
     const getMyCurrentPosition = (props) => {
         Geolocation.watchPosition(async (info)=>{
-            // console.log("COORDENADAS: ",info.coords);
             const geo = await Geocoder.from(info.coords.latitude, info.coords.longitude);
 
             if(geo.results.length > 0){
@@ -232,9 +255,6 @@ const Home = (props) => {
                 // setMapLoc(loc);
                 setLastFromLoc(fromLoc);
                 setFromLoc(loc);
-
-                // console.log(setMapLoc);
-
             }
         },  
         (error)=>{
@@ -274,11 +294,11 @@ const Home = (props) => {
       }
 
     const handleUserDirectionsReady = (r) => {
-        if(r.coordinates.length >= 2) {
+        // if(r.coordinates.length >= 2) {
             let angle = calculateAngle(r.coordinates)
             setAngleUser(angle)
         //   console.log('angle' + angle)
-        }
+        // }
     }
 
     const searchBoxClick = (toLoc)=>{
@@ -330,13 +350,13 @@ const Home = (props) => {
         <Container>
             
             <StatusBar barStyle="light-content"/>
-            <MapView
+            <MapView //CONFIGURAÇÕES GERAIS DO MAPA
                 ref={map}
                 style={{flex:1}}
                 provider="google"
-                camera={fromLoc}
+                camera={onBus ? busLoc : fromLoc}
             >
-                {fromLoc.center && !toLoc.center &&
+                {fromLoc.center && !toLoc.center && !onBus && //íCONE DO USUÁRIO
                     <MapView.Marker 
                     coordinate={fromLoc.center}
                     anchor={{x: 0.5, y: 0.4}}
@@ -356,24 +376,24 @@ const Home = (props) => {
 
                 {busLoc.center && busChose &&
                     
-                    <Marker
+                    <Marker //Ícone do ónibus
                         coordinate={busLoc.center} 
                         anchor={{x: 0.5, y: 0.4}}
                         flat={true}
                         rotation={angleCar}
                     >
-                        <Image   
+                        <Image
                             source={require('../../assets/images/icons/bus.png')}
                             style={{
-                                width: 40,
                                 height: 40,
+                                width: 40
                             }}
                         />
                     </Marker>
                 }
 
-                {showDirections && fromLoc.zoom != 25 && 
-                    <MapViewDirections 
+                {showDirections && fromLoc.zoom != 25 &&
+                    <MapViewDirections //local atual do usuário até o local desejado
                         origin={fromLoc.center}
                         destination={toLoc.center}
                         strokeWidth={5}
@@ -383,7 +403,33 @@ const Home = (props) => {
                     />
                 }
 
-                {showBusStopDirection && fromLoc.zoom != 25 &&
+                {showBusStopDirection && fromLoc.zoom != 25 && !onBus &&
+                    <MapViewDirections //Ponto inicial da linha até o ponto de ónibus
+                        origin={initialLoc.center}
+                        destination={toBusStop.center}
+                        strokeColor='transparent'
+                        apikey={MapsAPI}
+                        onReady={(r)=>{
+                            setInitialDistance(r.distance * 1000);
+                        }}
+                    />
+                }
+
+                {showBusStopDirection && fromLoc.zoom != 25 && onBus &&
+                    <MapViewDirections //Local atual do Ónibus até o ponto final da linha
+                        origin={toBusStop.center}
+                        destination={finalLoc.center}
+                        strokeColor={busChose ? color.Azul : 'transparent'}
+                        strokeWidth={4}
+                        mode="DRIVING"
+                        apikey={MapsAPI}
+                        onReady={(r)=>{
+                            handleDirectionsReady(r);
+                        }}
+                    />
+                }
+
+                {showBusStopDirection && fromLoc.zoom != 25 && //Local atual do Usuário até o ponto de ónibus
                     <MapViewDirections 
                         apikey={MapsAPI}
                         origin={fromLoc.center}
@@ -398,8 +444,8 @@ const Home = (props) => {
                     />
                 }
 
-                {directionsBus && toBusStop.zoom != 25 &&
-                    <MapViewDirections 
+                {directionsBus && toBusStop.zoom != 25 && !onBus &&
+                    <MapViewDirections //Local atual do Ónibus até o ponto selecionado
                         apikey={MapsAPI}
                         origin={busLoc.center}
                         destination={toBusStop.center}
@@ -407,10 +453,8 @@ const Home = (props) => {
                         strokeWidth={4}
                         mode="DRIVING"
                         onReady={(r) => {
+                            setBusDistance(r.distance * 1000)
                             setBusTime(r.duration)
-                            console.log("d"+r.duration)
-                            // setBusDistance(r.distance * 1000)
-
                             handleDirectionsReady(r);
                         }}
                         // onReady={handleDirectionsReady}
@@ -418,25 +462,7 @@ const Home = (props) => {
                     
                 }
 
-                {directionsBus && toBusStop.zoom != 25 &&
-                    <MapViewDirections 
-                        apikey={MapsAPI}
-                        origin={busLoc.center}
-                        destination={toBusStop.center}
-                        strokeColor={'transparent'}
-                        // strokeWidth={4}
-                        mode="WALKING"
-                        onReady={(r) => {
-                            setBusDistance(r.distance * 1000)
-
-                            // handleDirectionsReady(r);
-                        }}
-                        // onReady={handleDirectionsReady}
-                    />
-                    
-                }
-
-                {fromLoc.center && lastFromLoc.center &&
+                {fromLoc.center && lastFromLoc.center && //Local atual do Usuário até o local anterior do Usuário
                     <MapViewDirections 
                     apikey={MapsAPI}
                     origin={lastFromLoc.center}
@@ -450,7 +476,7 @@ const Home = (props) => {
                 }
 
                 {
-                    DATA_BUSLIST.map((busStop) => (
+                    DATA_BUSLIST.map((busStop) => ( //Gerador de pontos
 
                         <Marker
                             coordinate={busStop.center} 
@@ -550,6 +576,9 @@ const Home = (props) => {
                     busChose={setBusChose}
                     busInfoTime={busInfoTime}
                     busDistance={busDistance}
+                    initialDistance={initialDistance}
+                    onBusAction={setOnBus}
+                    onBus={onBus}
                 />    
             }
        

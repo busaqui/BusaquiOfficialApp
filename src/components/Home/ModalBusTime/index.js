@@ -9,13 +9,23 @@ export const ModalBusTime = (props) => {
     let Time = props.time;
     let BusInfoTime = props.busInfoTime;
     let BusDistance = props.busDistance;
+    let InitialDistance = props.initialDistance;
 
-    console.log(BusDistance);
+    const percentage = (a,b) =>{
+        let c = ((100*a)/b - 100)*(-1) + '%'
+
+        return c;
+    }
 
     const handleCloseModal = () => {
         props.visibleAction(false);
         props.busStopID(0);
         props.busChose(false);
+        props.onBusAction(false);
+    }
+
+    const onBus = () => {
+        props.onBusAction(!props.onBus);
     }
 
     return (
@@ -90,7 +100,7 @@ export const ModalBusTime = (props) => {
                                 justifyContent: 'space-between',
                             }}
                         >
-                            {BusDistance > 100 &&
+                            {(BusDistance > 100 || !props.onBus) &&
                                 <>
                                     <View
                                         style={{
@@ -128,10 +138,19 @@ export const ModalBusTime = (props) => {
                                             width: 265,
                                             borderRadius: 6
                                         }}
-                                    />
+                                    >
+                                        <View
+                                            style={{
+                                                backgroundColor: color.Azul,
+                                                height: 12,
+                                                width: percentage(BusDistance,InitialDistance),
+                                                borderRadius: 6
+                                            }}
+                                        />
+                                    </View>
 
                                 </>}
-                                {BusDistance < 100 &&
+                                {(BusDistance < 100 || props.onBus == true ) &&
                                 <TouchableOpacity
                                     style={{
                                         backgroundColor: color.Azul,
@@ -142,7 +161,7 @@ export const ModalBusTime = (props) => {
                                         borderRadius: 8,
                                         marginHorizontal: 11
                                     }}
-                                    onPress={handleCloseModal}
+                                    onPress={onBus}
                                 >
                                     <Text
                                         style={{

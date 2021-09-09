@@ -117,10 +117,20 @@ const Locations = (props) => {
             >
 
                {busLoc.center && 
-               <MapView.Marker
-                coordinate={busLoc.center}
-                pinColor='black'
-                />
+                <Marker //Ícone do ónibus
+                coordinate={busLoc.center} 
+                anchor={{x: 0.5, y: 0.4}}
+                flat={true}
+                // rotation={angleCar}
+                >
+                    <Image
+                        source={require('../../assets/images/icons/bus.png')}
+                        style={{
+                            height: 40,
+                            width: 40
+                        }}
+                    />
+                </Marker>
                }
                 
             </MapView>

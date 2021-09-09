@@ -17,8 +17,6 @@ const BusList = (props) => {
     let busTime = props.busTime;
     let busStop = props.busStop;
 
-    console.log(busTime);
-
     const handleBack = () => {
         props.busListVisible(false);
         props.busStopID(0);
