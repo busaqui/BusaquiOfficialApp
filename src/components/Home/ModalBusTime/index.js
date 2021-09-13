@@ -1,6 +1,25 @@
 import React from 'react';
 import { View, Text, Modal, TouchableOpacity, Image } from 'react-native';
 import color from '../../../assets/color';
+import {
+    BlueButton,
+    BlueButtonText,
+    BusTimeText,
+    BusTimeTextArea,
+    CloseButton,
+    CloseButtonText,
+    Container,
+    Content, 
+    Footer, 
+    Header, 
+    LoadBarBlue, 
+    LoadBarContainer, 
+    RouteNumArea, 
+    RouteNumIcon, 
+    RouteNumID, 
+    RouteTitle, 
+    SwitchableArea
+} from './styled';
 
 export const ModalBusTime = (props) => {
 
@@ -32,93 +51,34 @@ export const ModalBusTime = (props) => {
         <Modal
             transparent
         >
-            <View style={{ flex: 1, justifyContent: 'flex-end' }}>
-                <View
-                    style={{
-                        height: 158,
-                        backgroundColor: 'white',
-                        borderTopLeftRadius: 8,
-                        borderTopRightRadius: 8,
-                        justifyContent: 'space-evenly'
-                    }}
-                >
-                    <View style={{
-                        flexDirection: 'row',
-                        // marginTop: 25,
-                        justifyContent: 'space-between',
-                        marginHorizontal: 30,
-                    }}>
-
-                        <Text
-                            style={{
-                                color: color.Azul,
-                                fontFamily: 'Montserrat-Bold',
-                                fontSize: 18
-                            }}
-                        >
+            <Container>
+                <Content>
+                    <Header>
+                        <RouteTitle>
                             {RouteName}
-                        </Text>
+                        </RouteTitle>
 
-                        <View
-                            style={{
-                                flexDirection: 'row'
-                            }}
-                        >
-
-                            <Image
+                        <RouteNumArea>
+                            <RouteNumIcon
                                 source={require('../../../assets/images/icons/busIcon.png')}
-                                style={{
-                                    height: 18,
-                                    width: 18,
-                                    marginRight: 10,
-                                    marginTop: 3
-                                }}
                             />
 
-
-                            <Text
-                                style={{
-                                    color: color.Azul,
-                                    fontSize: 16,
-                                    fontFamily: 'Montserrat-Bold'
-                                }}
-                            >
+                            <RouteNumID>
                                 {RouteID}
-                            </Text>
-                        </View>
-                    </View>
+                            </RouteNumID>
+                        </RouteNumArea>
+                    </Header>
 
-                    <View
-                        style={{
-                            marginHorizontal: 19,
-                            flexDirection: 'row',
-                            justifyContent: 'space-between'
-                        }}
-                    >
-                        <View
-                            style={{
-                                justifyContent: 'space-between',
-                            }}
-                        >
-                            {(BusDistance > 100 || !props.onBus) &&
+                    <Footer>
+                        <SwitchableArea>
+                            {(BusDistance > 100 && !props.onBus) &&
                                 <>
-                                    <View
-                                        style={{
-                                            flexDirection: 'row'
-                                        }}
-                                    >
-                                        <Text
-                                            style={{
-                                                marginBottom: 15,
-                                                color: color.Azul,
-                                                fontFamily: 'Montserrat-Regular',
-                                                fontSize: 17
-                                            }}
-                                        > {/* Este: Body - Text, Acima: Body - Text + Loading, Acima: Body*/}
+                                    <BusTimeTextArea>
+                                        <BusTimeText> {/* Este: Body - Text, Acima: Body - Text + Loading, Acima: Body*/}
                                             {`Chegada em`}
-                                        </Text>
+                                        </BusTimeText>
 
-                                        <Text
+                                        <BusTimeText
                                             style={{
                                                 marginBottom: 15,
                                                 color: color.Azul,
@@ -127,79 +87,39 @@ export const ModalBusTime = (props) => {
                                             }}
                                         > {/* Este: Body - Text, Acima: Body - Text + Loading, Acima: Body*/}
                                             {BusInfoTime}
-                                        </Text>
-                                    </View>
+                                        </BusTimeText>
+                                    </BusTimeTextArea>
 
 
-                                    <View
-                                        style={{
-                                            backgroundColor: color.AzulClaro,
-                                            height: 12,
-                                            width: 265,
-                                            borderRadius: 6
-                                        }}
-                                    >
-                                        <View
+                                    <LoadBarContainer>
+                                        <LoadBarBlue
                                             style={{
-                                                backgroundColor: color.Azul,
-                                                height: 12,
-                                                width: percentage(BusDistance,InitialDistance),
-                                                borderRadius: 6
+                                                width: percentage(BusDistance,InitialDistance)
                                             }}
                                         />
-                                    </View>
+                                    </LoadBarContainer>
 
                                 </>}
                                 {(BusDistance < 100 || props.onBus == true ) &&
-                                <TouchableOpacity
-                                    style={{
-                                        backgroundColor: color.Azul,
-                                        width:207,
-                                        height:48,
-                                        justifyContent: 'center',
-                                        alignItems: 'center',
-                                        borderRadius: 8,
-                                        marginHorizontal: 11
-                                    }}
+                                <BlueButton
                                     onPress={onBus}
                                 >
-                                    <Text
-                                        style={{
-                                            color: color.Branco,
-                                            fontFamily: 'Montserrat-Medium',
-                                            fontSize: 16
-                                        }}
-                                    >
+                                    <BlueButtonText>
                                         Confirmar embarque
-                                    </Text>
-                                </TouchableOpacity>}
-                        </View>
+                                    </BlueButtonText>
+                                </BlueButton>}
+                        </SwitchableArea>
 
-                        <TouchableOpacity
-                            style={{
-                                height: 48,
-                                width: 64,
-                                borderRadius: 8,
-                                borderWidth: 2,
-                                borderColor: color.Azul,
-                                justifyContent: 'center',
-                                alignItems: 'center'
-                            }}
+                        <CloseButton
                             onPress={handleCloseModal}
                         >
-                            <Text
-                                style={{
-                                    fontSize: 16,
-                                    color: color.Azul,
-                                    fontFamily: 'Montserrat-SemiBold'
-                                }}
-                            >
+                            <CloseButtonText>
                                 Sair
-                            </Text>
-                        </TouchableOpacity>
-                    </View>
-                </View>
-            </View>
+                            </CloseButtonText>
+                        </CloseButton>
+                    </Footer>
+                </Content>
+            </Container>
         </Modal>
     )
 }
