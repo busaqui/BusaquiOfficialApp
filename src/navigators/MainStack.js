@@ -8,7 +8,7 @@ import Preload from '../screens/Preload';
 import SignIn from '../screens/TemporarySignIn';
 import SignUp from '../screens/TemporarySignUp';
 import HomeDrawer from './HomeDrawer';
-import LocationBus from '../screens/Home/locationBus.js'
+import LocationBus from '../screens/Home/locationBus.js';
 import Notification from '../screens/Notification/';
 
 //ÁREA DE SEQUÊNCIA DE "CHAMADA" DAS TELAS
