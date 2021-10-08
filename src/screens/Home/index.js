@@ -228,7 +228,7 @@ const Home = (props) => {
     function calculateAngle(coordinates) {
         let startLat = coordinates[0]["latitude"]
         let startLng = coordinates[0]["longitude"]
-        let endLat = coordinates[1]["latitude"]
+        let endLat = coordinates[1]["latitude"]    /*--------------------- ERRRo nesta Linha-----------------------*/
         let endLng = coordinates[1]["longitude"]
         let dx = endLat - startLat
         let dy = endLng - startLng
